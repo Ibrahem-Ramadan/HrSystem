@@ -1,0 +1,256 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section id="horizontal-form-layouts">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="content-header">Add Employees Form</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-success">
+                        <h4 class="card-title" id="horz-layout-basic">Employee Information</h4>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="px-3">
+                        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form form-horizontal" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-body">
+                                <h4 class="form-section">
+                                    <i class="icon-user"></i> Personal Details
+                                </h4>
+                                @*FirstName*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.FirstName">First Name: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.FirstName" class="form-control" />
+                                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*	LastName*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.LastName">Last Name: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.LastName" class="form-control" />
+                                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*Email*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.Email">E-mail: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"  />
+                                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                 @*Password*@
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" asp-for="Input.Password">Password : </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                @*Password*@
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" asp-for="Input.ConfirmPassword">Confirm Password:</label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                @*PhoneNumber*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.PhoneNumber">CONTACT NUMBER: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.PhoneNumber" class="form-control" />
+                                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                                <h4 class="form-section">
+                                    <i class="icon-book-open"></i>Other Details
+                                </h4>
+
+
+                                @*BirthOfDate*@
+
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.BirthOfDate">BIRTH OF DATE: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.BirthOfDate" type="date" class="form-control" />
+                                        <span asp-validation-for="Input.BirthOfDate" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*Gender*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.Gender">GENDER: </label>
+                                    <div class="col-md-9">
+                                        <select asp-for="Input.Gender" class="form-control">
+                                            <option value="0" selected="" disabled="">Select Gender</option>
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                        <span asp-validation-for="Input.Gender" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*DEPARTMENT*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.deptId">DEPARTMENT: </label>
+                                    <div class="col-md-9">
+                                        <select  asp-for="Input.deptId" asp-items="Model.departments" class="form-control" >
+                                            <option selected="" disabled="">Select Department</option>
+                                        </select>
+                                        <span asp-validation-for="Input.deptId" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*EmploymentDate*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.EmploymentDate">Employment Date: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.EmploymentDate" type="date" class="form-control" />
+                                        <span asp-validation-for="Input.EmploymentDate" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*AttendanceTime*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.AttendanceTime">START TIME: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.AttendanceTime" type="time" class="form-control" />
+                                        <span asp-validation-for="Input.AttendanceTime" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*CheckOutTime*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.CheckOutTime">END TIME: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.CheckOutTime" type="time" class="form-control" />
+                                        <span asp-validation-for="Input.CheckOutTime" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*SalaryAmount*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.SalaryAmount">SALARY: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.SalaryAmount" type="number" class="form-control" />
+                                        <span asp-validation-for="Input.SalaryAmount" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*JopTitle*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.JopTitle">Jop Title: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.JopTitle" type="text" class="form-control" />
+                                        <span asp-validation-for="Input.JopTitle" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*SSN*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.SSN">NATIONAL ID: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.SSN" type="text" class="form-control" />
+                                        <span asp-validation-for="Input.SSN" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*Nationality*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.Nationality">NATIONALITY: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.Nationality" type="text" class="form-control" />
+                                        <span asp-validation-for="Input.Nationality" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                @*Address*@
+                                <div class="form-group row">
+
+                                    <label class="col-md-3 label-control" asp-for="Input.Address">Address: </label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Input.Address" type="text" class="form-control" />
+                                        <span asp-validation-for="Input.Address" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                                @*ProfilePicture*@
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" asp-for="Input.ProfilePicture">Select Picture: </label>
+                                    <div class="col-md-9">
+                                        <label asp-for="Input.ProfilePicture" class="file center-block">
+                                            <input type="file" accept="image/*" asp-for="Input.ProfilePicture">
+                                            <span class="file-custom"></span>
+                                            :
+                                        </label>
+                                        <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                @*Notes*@
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" asp-for="Input.Notes">Notes: </label>
+                                    <div class="col-md-9">
+                                        <textarea asp-for="Input.Notes" rows="5" class="form-control"></textarea>
+                                        <span asp-validation-for="Input.ProfilePicture" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="reset" class="btn btn-danger mr-1">
+                                        <i class="icon-trash"></i> Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="icon-note"></i> Save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

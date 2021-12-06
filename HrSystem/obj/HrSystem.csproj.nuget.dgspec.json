@@ -1,0 +1,129 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\ITI Full Stack Web Development with Dot Net Material\\GP\\HR Sytem\\Repository\\HrSystem\\HrSystem\\HrSystem.csproj": {}
+  },
+  "projects": {
+    "F:\\ITI Full Stack Web Development with Dot Net Material\\GP\\HR Sytem\\Repository\\HrSystem\\HrSystem\\HrSystem.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\ITI Full Stack Web Development with Dot Net Material\\GP\\HR Sytem\\Repository\\HrSystem\\HrSystem\\HrSystem.csproj",
+        "projectName": "HrSystem",
+        "projectPath": "F:\\ITI Full Stack Web Development with Dot Net Material\\GP\\HR Sytem\\Repository\\HrSystem\\HrSystem\\HrSystem.csproj",
+        "packagesPath": "C:\\Users\\workstation\\.nuget\\packages\\",
+        "outputPath": "F:\\ITI Full Stack Web Development with Dot Net Material\\GP\\HR Sytem\\Repository\\HrSystem\\HrSystem\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\workstation\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://www.nuget.org/api/v2/": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AspNetCore.Mvc.SelectList": {
+              "target": "Package",
+              "version": "[1.2.14, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.DotNet.PlatformAbstractions": {
+              "target": "Package",
+              "version": "[3.1.6, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Mvc.JQuery.DataTables.AspNetCore": {
+              "target": "Package",
+              "version": "[1.5.56, )"
+            },
+            "Mvc.JQuery.Datatables": {
+              "target": "Package",
+              "version": "[1.5.56, )"
+            },
+            "datatables.net-dt": {
+              "target": "Package",
+              "version": "[1.11.3, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -199,6 +199,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -225,6 +241,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYXRpb25zXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYXRpb25zXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYXRpb25zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Index.cshtml]

@@ -177,7 +177,7 @@ namespace HrSystem.Controllers
             obj.Notes = emp.Notes;
             obj.ProfilePicture = emp.ProfilePicture;
 
-            return View(obj);
+            return PartialView("Details", obj);
         }
 
         // GET: EmployeeController/Create
@@ -341,7 +341,7 @@ namespace HrSystem.Controllers
             obj.Address = emp.Address;
             obj.Notes = emp.Notes;
 
-            return View(obj); ;
+            return PartialView(obj); ;
         }
 
         // POST: EmployeeController/Delete/5

@@ -4,6 +4,7 @@ using HrSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211207133347_addSSNcoulmnAtVacationTable")]
+    partial class addSSNcoulmnAtVacationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,27 +245,6 @@ namespace HrSystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExtraDiscountSettings");
-                });
-
-            modelBuilder.Entity("HrSystem.Models.OfficialHoliday", b =>
-                {
-                    b.Property<int>("HolidayId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HolidayId"), 1L, 1);
-
-                    b.Property<DateTime>("HolidayDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("HolidayName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasKey("HolidayId");
-
-                    b.ToTable("OfficialHolidays");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Permissions", b =>

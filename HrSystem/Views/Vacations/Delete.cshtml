@@ -1,5 +1,5 @@
-﻿
-@model HrSystem.ViewModels.EmployeeViewModel
+﻿@model HrSystem.Models.Vacation
+
 
 
 
@@ -14,19 +14,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <p> @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.LastName)</p>
+        <p> @Html.DisplayFor(model => model.VacationTitle) </p>
       </div>
       <div class="modal-footer">
 
             <form asp-action="Delete" method="post">
-                 <input type="hidden" asp-for="Id" />
-
-                <input type="submit" value="Delete" class="btn btn-danger" />   </form>  |
+                 <input type="hidden" asp-for="VacationId" />
+                <input type="submit" value="Delete" class="btn btn-danger" /> |
                 <button type="button" class="btn btn-secondary" onclick="closeModal()" >Close</button>
-          
+            </form>  
       </div>
     
-
 
 
 

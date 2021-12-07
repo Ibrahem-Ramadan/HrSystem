@@ -16,7 +16,7 @@ namespace HrSystem.Models
         public string VacationTitle { get; set; }
         [Required]
         public string VacationType { get; set; }
-        [NotMapped]
+       
         [Remote("check", "Vacations", ErrorMessage = "ssn is not exist !!")]
         public string SSN { get; set; }
         [Required]

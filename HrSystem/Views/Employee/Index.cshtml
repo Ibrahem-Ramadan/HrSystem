@@ -52,37 +52,27 @@
 
 </section>
 
+@*Details*@
+<div  class="modal" tabindex="-1" role="dialog" id="Details">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content" id="DetailsPopUp">
 
-@*POPUO///////////////////////*@
-@*<div class="modal-body">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4">.col-md-4</div>
-      <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
-    </div>
-    <div class="row">
-      <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
-      <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
-    </div>
-    <div class="row">
-      <div class="col-sm-9">
-        Level 1: .col-sm-9
-        <div class="row">
-          <div class="col-8 col-sm-6">
-            Level 2: .col-8 .col-sm-6
-          </div>
-          <div class="col-4 col-sm-6">
-            Level 2: .col-4 .col-sm-6
-          </div>
-        </div>
+
       </div>
-    </div>
-  </div>*@
-@*</div>*@
-@*POPUO///////////////////////*@
+
+     </div>
+</div>
+
+@*Delete
+*@
+ <div class="modal" tabindex="-1" role="dialog" id="DelModal">
+  <div class="modal-dialog" role="document">
+	   <div class="modal-content" id="DeletePopUp">
+
+
+   </div>
+  </div>
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="~/app-assets/js/FindDataTable.js"></script>
 
@@ -114,20 +104,24 @@
 						{
 									 var id = row.id
 									 var tag = '';
-										   tag += ' <a onclick=\'Edit("' + id+ '")\'  class="btn btn-circle default blue stripe hidden-print">';
+										   tag += ' <a onclick=\'Edit("' + id+ '")\'  class="btn btn-primary">';
 										   tag += '<i class="fa fa-edit"></i>    Edit  </a>';
-										   tag += ' <a onclick=\'Delete("' + id + '")\'  class="btn btn-circle default blue stripe hidden-print">';
-										   tag += '<i class="fa fa-Delete"></i>     Delete  </a>';
-										   tag += ' <a onclick=\'Details("' + id + '")\'  class="btn btn-circle default blue stripe hidden-print">';
-										   tag += '<i class="fa fa-Details"></i>     Details  </a>';
-										  
+										   tag += ' <a onclick=\'Delete("' + id + '")\'  class="btn btn-danger">';
+										   tag += '<i class="icon-trash"></i>     Delete  </a>';
+										   tag += ' <a onclick=\'Details("' + id + '")\'  class="btn btn-info">';
+										   tag += '<i class="fas fa-info"></i>     Details  </a>';
+										
 											 return tag;
 						}
 					}
 
 	];
-
-
+	function closeModal(){
+	$('#DelModal').modal('toggle')
+	}
+	function closeDetails(){
+	$('#Details').modal('toggle')
+	}
 
 	function Edit(id)
 	{
@@ -137,15 +131,33 @@
 	}
 	function Delete(id)
 	{
-		
-		var Url = "@Url.Action("Delete", "Employee")";
-        location.href = Url + "?id=" + id;
+		 $.ajax({
+                    url: '@Url.Action("Delete" ,"Employee")',
+                    type: 'GET',
+                    cache: false,
+                    data: { id: id }
+                }).done(function(result) {
+                        $('#DeletePopUp').html(result);
+						$('#DelModal').modal('toggle')
+						
+                });
+	
 	}
+
 	function Details(id)
 	{
 	
-		var Url = "@Url.Action("Details", "Employee")";
-        location.href = Url + "?id=" + id;
+		 $.ajax({
+                    url: '@Url.Action("Details" ,"Employee")',
+                    type: 'GET',
+                    cache: false,
+                    data: { id: id }
+                }).done(function(result) {
+					
+                        $('#DetailsPopUp').html(result);
+						$('#Details').modal('toggle')
+						
+                });
 	}
 
 </script>

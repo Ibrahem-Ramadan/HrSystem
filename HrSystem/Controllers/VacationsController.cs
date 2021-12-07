@@ -131,11 +131,7 @@ namespace HrSystem.Controllers
 
 
 
-        // GET: VacationsController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+      
 
         // GET: VacationsController/Create
         public ActionResult Create()
@@ -175,6 +171,7 @@ namespace HrSystem.Controllers
                     vac.VacationType=newVacation.VacationType;
                     vac.DateFrom=newVacation.DateFrom;
                     vac.DateTo = newVacation.DateTo;
+                    vac.SSN=newVacation.SSN;
                     vac.EmployeeId = emp.Id;
                     DbContext.Vacations.Add(vac);
                     DbContext.SaveChanges();
@@ -191,17 +188,30 @@ namespace HrSystem.Controllers
         // GET: VacationsController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+
+            var vac = DbContext.Vacations.Find(id);
+            return View(vac);
         }
 
         // POST: VacationsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Vacation newVacation)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    var vac=DbContext.Vacations.Find(newVacation.VacationId);
+                    vac.VacationTitle = newVacation.VacationTitle;
+                    vac.Status=newVacation.Status;
+                    vac.DateTo=newVacation.DateTo;
+                    vac.DateFrom= newVacation.DateFrom;
+                    vac.SSN= newVacation.SSN;
+                    DbContext.SaveChanges();
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
             }
             catch
             {
@@ -212,16 +222,21 @@ namespace HrSystem.Controllers
         // GET: VacationsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var vac = DbContext.Vacations.Find(id);
+            return PartialView("Delete", vac);
         }
 
         // POST: VacationsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Vacation vacc)
         {
             try
             {
+                var vac = DbContext.Vacations.Find(vacc.VacationId);
+                DbContext.Vacations.Remove(vac);
+                DbContext.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch

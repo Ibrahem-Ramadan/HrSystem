@@ -131,32 +131,21 @@
 
 	function Edit(id)
 	{
-		 $.ajax({
-				url: '/Employee/Edit/'+id,
-                type: 'Get',
-              
-                success: function (result) {
-                   //write something
-                },
-                error: function () {
-                    alert("error");
-                }
-				});
+		
+		var Url = "@Url.Action("Edit", "Employee")";
+        location.href = Url + "?id=" + id;
 	}
 	function Delete(id)
 	{
-		 $.ajax({
-		  url: '/Employee/Delete/',
-		  data: { id: id }
-
-	   })
+		
+		var Url = "@Url.Action("Delete", "Employee")";
+        location.href = Url + "?id=" + id;
 	}
 	function Details(id)
 	{
-		 $.ajax({
-		  url: '/Employee/Delete',
-		  data: { id: id }
-	   })
+	
+		var Url = "@Url.Action("Details", "Employee")";
+        location.href = Url + "?id=" + id;
 	}
 
 </script>

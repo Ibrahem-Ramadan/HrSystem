@@ -17,10 +17,8 @@ builder.Services.AddIdentity<Employee,EmployeeRole>(options => options.SignIn.Re
     .AddDefaultUI();
 
 
-builder.Services.AddControllersWithViews().AddNewtonsoftJson();
-
-
-builder.Services.AddRazorPages().AddNewtonsoftJson();
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

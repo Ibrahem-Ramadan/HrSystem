@@ -46,7 +46,7 @@
     <div class="wrapper">
 
 
-        <div data-active-color="white" data-background-color="black" @*data-image="~/app-assets/img/sidebar-bg/01.jpg"*@ class="app-sidebar">
+        <div data-active-color="white" data-background-color="black" data-image="~/app-assets/img/sidebar-bg/01.jpg" class="app-sidebar">
             <div class="sidebar-header">
                 <div class="logo clearfix">
                     <a href="index.html" class="logo-text float-left">
@@ -481,7 +481,7 @@
                               class="gradient-timber d-block rounded box-shadow-2"></span>
                     </div>
                 </div>
-        @*        <div class="row p-1">
+                <div class="row p-1">
                     <div class="col mb-3">
                         <span style="width:50px; height:100px;" data-bg-color="black"
                               class="bg-black d-block rounded box-shadow-2"></span>
@@ -489,15 +489,15 @@
                     <div class="col mb-3">
                         <span style="width:50px; height:100px;" data-bg-color="white"
                               class="bg-white d-block rounded box-shadow-2"></span>
-                    </div>*@
-               @*     <div class="col mb-3">
+                    </div>
+                    <div class="col mb-3">
                         <span style="width:50px; height:100px;" data-bg-color="primary"
                               class="bg-primary d-block rounded box-shadow-2"></span>
                     </div>
                     <div class="col mb-3">
                         <span style="width:50px; height:100px;" data-bg-color="danger"
                               class="bg-danger d-block rounded box-shadow-2"></span>
-                    </div>*@
+                    </div>
                 </div>
             </div>
             <hr>
@@ -525,25 +525,23 @@
     </div>
 
 
-    
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/jquery/dist//jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/app-assets/vendors/js/core/jquery-3.3.1.min.js"></script>
     <script src="~/app-assets/vendors/js/core/popper.min.js"></script>
-@*    <script src="~/app-assets/vendors/js/core/bootstrap.min.js"></script>
-*@    <script src="~/app-assets/vendors/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/app-assets/vendors/js/core/bootstrap.min.js"></script>
+    <script src="~/app-assets/vendors/js/perfect-scrollbar.jquery.min.js"></script>
     <script src="~/app-assets/vendors/js/prism.min.js"></script>
     <script src="~/app-assets/vendors/js/jquery.matchHeight-min.js"></script>
     <script src="~/app-assets/vendors/js/screenfull.min.js"></script>
     <script src="~/app-assets/vendors/js/pace/pace.min.js"></script>
+    <script src="~/app-assets/vendors/js/chartist.min.js"></script>
     <script src="~/app-assets/js/app-sidebar.js"></script>
     <script src="~/app-assets/js/notification-sidebar.js"></script>
     <script src="~/app-assets/js/customizer.js"></script>
-  
+    <script src="~/app-assets/js/dashboard-ecommerce.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
-@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -610,7 +610,7 @@
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			events: {
-				url: '~/app-assets/data/fullcalendar/php/get-events.php',
+				url: '../../../app-assets/data/fullcalendar/php/get-events.php',
 				error: function() {
 					$('#script-warning').show();
 				}
@@ -729,7 +729,7 @@
 			selectable: true,
 			eventLimit: true, // allow "more" link when too many events
 			events: {
-				url: '~/app-assets/data/fullcalendar/php/get-events.php',
+				url: '../../../app-assets/data/fullcalendar/php/get-events.php',
 				error: function() {
 					$('#script-warning').show();
 				}
@@ -754,7 +754,7 @@
 		});
 
 		// load the list of available timezones, build the <select> options
-		$.getJSON('~/app-assets/data/fullcalendar/php/get-timezones.php', function(timezones) {
+		$.getJSON('../app-assets/data/fullcalendar/php/get-timezones.php', function(timezones) {
 			$.each(timezones, function(i, timezone) {
 				if (timezone != 'UTC') { // UTC is already in the list
 					$('#timezone-selector').append(

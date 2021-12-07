@@ -125,9 +125,17 @@
 
 	function Edit(id)
 	{
-		
-		var Url = "@Url.Action("Edit", "Employee")";
-        location.href = Url + "?id=" + id;
+		 $.ajax({
+				url: '/Employee/Edit/'+id,
+                type: 'Get',
+              
+                success: function (result) {
+                   //write something
+                },
+                error: function () {
+                    alert("error");
+                }
+				});
 	}
 	function Delete(id)
 	{

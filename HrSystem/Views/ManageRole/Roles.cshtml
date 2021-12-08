@@ -1,0 +1,105 @@
+﻿@model IEnumerable<EmployeeRole>
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="configuration">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-success">
+                        <h4 class="card-title">Groups </h4>
+                    </div>
+                </div>
+                <div class="card-body collapse show">
+                    <div class="card-block card-dashboard">
+                        <div class="px-3">
+                            <form>
+                                <div class="form-body">
+                                    <div class="form-group row">
+                                        <label class="col-md-2 label-control">Group Name: </label>
+
+                                        <div class="col-md-7">
+                                            <input type="text" id="groupNameInput" class="form-control">
+                                            @*<span asp-validation-for="" class="text-danger"></span>*@
+                                        </div>
+
+                                        <button id="btnAddGroup" type="reset" class="btn btn-success col-md-2">
+                                            <i class="icon-note"></i> Add Group
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="rolesTable">
+                            @*patial view loaded here*@
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class=" col-md-10">
+                        </div>
+                        <div class=" col-md-2">
+                            <button class="btn btn-success">Save Changes</button>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootbox.js/bootbox.min.js"></script>
+
+<script>
+
+    //Page Load Event
+    $(function () {
+        $("#rolesTable").load("/managerole/Loadroles")
+
+    });
+
+    $("#btnAddGroup").on("click", function () {
+        let nwGroup = $("#groupNameInput").val();
+        $("#rolesTable").load("/managerole/add?groupName="+nwGroup);
+        console.log($(".btnDelete"));
+    });
+
+    function deleteRole(target){
+        let btn = $(target);
+        bootbox.confirm({
+        message: "Are You Sure to Delete "+ btn.data('id')+" Role",
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-danger'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-secondary'
+            }
+        },
+        callback: function (result) {
+            if(result){
+               
+                $("#rolesTable").load("/managerole/Delete?groupName="+btn.data('id'));
+            }
+        }
+        });
+
+    }
+
+</script>
+<partial name="_ValidationScriptsPartial" />
+
+}
+

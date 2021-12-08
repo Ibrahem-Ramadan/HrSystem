@@ -1,0 +1,32 @@
+﻿@model IEnumerable<EmployeeRole>
+
+<table class="table  table-bordered zero-configuration ">
+    <thead class="thead-dark">
+        <tr>
+            <th>Group Name</th>
+            <th>Show </th>
+            <th>Add</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+            <tr>
+                <td>@role.Name</td>
+                <td> <input type="checkbox" id="item1" name="item"></td>
+                <td> <input type="checkbox" id="item1" name="item"></td>
+                <td> <input type="checkbox" id="item1" name="item"></td>
+                <td> <input type="checkbox" id="item1" name="item"></td>
+                <td>
+
+                    <button href="javascript:;" class="btn btn-danger btnDelete" onclick="deleteRole(this)" data-id=@role.Name>
+                        <i class="icon-trash"></i> Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

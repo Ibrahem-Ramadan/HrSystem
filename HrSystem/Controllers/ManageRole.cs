@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace HrSystem.Controllers
 {
@@ -24,16 +24,30 @@ namespace HrSystem.Controllers
         }
 
         // GET: ManageRole
-        public ActionResult Index()
+        public async Task<ActionResult> Roles()
         {
-            return View();
+            return View(await _roleManager.Roles.ToListAsync());
         }
 
-        // GET: ManageRole/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Add( string groupName)
         {
-            return View();
+            if(!ModelState.IsValid)
+                return View("Roles", await _roleManager.Roles.ToListAsync());
+            if(await _roleManager.RoleExistsAsync(groupName))
+            {
+                ModelState.AddModelError("groupName","Group is Exists !");
+                return View("Roles", await _roleManager.Roles.ToListAsync());
+            }
+
+            await _roleManager.CreateAsync(new EmployeeRole(groupName));
+            return PartialView("Loadroles",await _roleManager.Roles.ToListAsync());
         }
+
+        public async Task<ActionResult> Loadroles()
+        {
+            return PartialView(await _roleManager.Roles.ToListAsync());
+        }
+
 
         public ActionResult Create()
         {
@@ -91,25 +105,12 @@ namespace HrSystem.Controllers
             }
         }
 
-        // GET: ManageRole/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(string groupName)
         {
-            return View();
+            await _roleManager.DeleteAsync(await _roleManager.FindByNameAsync(groupName));
+            return PartialView("Loadroles", await _roleManager.Roles.ToListAsync());
         }
 
-        // POST: ManageRole/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+
     }
 }

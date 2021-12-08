@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eslam PC\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj": {}
+    "C:\\Users\\Mahmoud\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eslam PC\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj": {
+    "C:\\Users\\Mahmoud\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eslam PC\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj",
+        "projectUniqueName": "C:\\Users\\Mahmoud\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj",
         "projectName": "HrSystem",
-        "projectPath": "C:\\Users\\Eslam PC\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj",
-        "packagesPath": "C:\\Users\\Eslam PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eslam PC\\Documents\\GitHub\\HrSystem\\HrSystem\\obj\\",
+        "projectPath": "C:\\Users\\Mahmoud\\Documents\\GitHub\\HrSystem\\HrSystem\\HrSystem.csproj",
+        "packagesPath": "C:\\Users\\Mahmoud\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mahmoud\\Documents\\GitHub\\HrSystem\\HrSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Eslam PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Mahmoud\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[1.2.14, )"
             },
+            "ChartistJS": {
+              "target": "Package",
+              "version": "[0.11.3, )"
+            },
             "Microsoft.AspNet.Mvc": {
               "target": "Package",
               "version": "[5.2.7, )"
@@ -60,6 +64,10 @@
               "target": "Package",
               "version": "[6.0.0, )"
             },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
             "Microsoft.DotNet.PlatformAbstractions": {
               "target": "Package",
               "version": "[3.1.6, )"
@@ -71,6 +79,10 @@
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Proxies": {
               "target": "Package",
               "version": "[6.0.0, )"
             },

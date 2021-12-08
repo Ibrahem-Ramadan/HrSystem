@@ -9,6 +9,10 @@ namespace HrSystem.Models
         public int VacationId { get; set; }
         public string VacationTitle { get; set; }
         public string VacationType { get; set; }
+       
+        [Remote("check", "Vacations", ErrorMessage = "ssn is not exist !!")]
+        public string SSN { get; set; }
+        [Required]
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public string Status { get; set; }

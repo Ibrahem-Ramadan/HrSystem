@@ -1,0 +1,24 @@
+﻿
+@model HrSystem.ViewModels.EmployeeViewModel
+
+
+  <button type="button" class="close" onclick="closeDetails()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+<div class="container mt-2 mb-2 p-2 d-flex justify-content-center">
+    <div class="card p-2">
+        <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="~/ProfilePics/@Model.ProfilePicture" height="100" width="100" /></button> <span class="name mt-3">@Model.FirstName @Model.LastName</span> <span class="idd">@Model.Email</span>
+            <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">@Model.PhoneNumber</span> <span><i class="fa fa-copy"></i></span> </div>
+            <div class="d-flex flex-row justify-content-center align-items-center mt-2"> <span class="number">@Model.SalaryAmount <span class="follow">Pounds</span></span> </div>
+            <div class=" d-flex mt-2">
+               <form asp-action="Edit" method="get">
+                <input type="hidden" asp-for="Id" /> 
+                
+                <input type="submit" class="btn btn-primary" value="Edit Profile"/></form> </div>
+            <div class=" px-2 rounded mt-2 date "> <span class="join">Joined @Model.EmploymentDate </span> </div>
+            <div class=" px-2 rounded mt-2 date "> <span class="join">Attend at  @Model.AttendanceTime</span> </div>
+            <div class=" px-2 rounded mt-2 date "> <span class="join">Leave at  @Model.CheckOutTime</span> </div>
+            <div class=" px-2 rounded mt-2 date "> <span class="join">Jop Title: @Model.JopTitle</span> </div>
+        </div>
+    </div>
+</div>

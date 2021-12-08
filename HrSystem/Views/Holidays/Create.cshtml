@@ -1,0 +1,77 @@
+﻿@model HrSystem.Models.OfficialHoliday
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Add	Holidays</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title-wrap bar-success">
+						<h4 class="card-title" id="horz-layout-basic">Holidays Data</h4>
+					</div>
+					<p class="mb-0">This is the basic horizontal form with labels on left and cost estimation form is the default position.</p>
+				</div>
+				<div class="card-body">
+					<div class="px-3">
+						<form asp-action="Create" method="post" class="form form-horizontal" enctype="multipart/form-data">
+							
+							<div class="form-body">
+								
+								@*FirstName*@
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="HolidayName">Holiday Description: </label>
+									<div class="col-md-9">
+										<input asp-for="HolidayName" class="form-control" />
+										<span asp-validation-for="HolidayName" class="text-danger"></span>
+
+									</div>
+								</div>
+							
+
+
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="HolidayDate">Date : </label>
+									<div class="col-md-9">
+										<input asp-for="HolidayDate" type="date" class="form-control" />
+										<span asp-validation-for="HolidayDate" class="text-danger"></span>
+
+									</div>
+								</div>
+
+								<div class="form-actions">
+									<button type="reset" class="btn btn-danger mr-1">
+										<i class="icon-trash"></i> Cancel
+									</button>
+									<button type="submit" class="btn btn-success">
+										<i class="icon-note"></i> Save
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</section>
+
+
+
+@section Scripts {
+    @{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

@@ -5956,15 +5956,16 @@ button.close {
   border : 1px solid rgba(0, 0, 0, 0.2);
   border-radius : 0.3rem;
   outline : 0;
+  top:0;
 }
 
 .modal-backdrop {
-  position : fixed;
-  top : 0;
+  position : static;
+  top : 50px;
   right : 0;
   bottom : 0;
   left : 0;
-  z-index : 1040;
+  z-index : 1;
   background-color : #000000;
 }
 .modal-backdrop.fade {

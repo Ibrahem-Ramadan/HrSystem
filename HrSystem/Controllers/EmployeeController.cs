@@ -121,7 +121,26 @@ namespace HrSystem.Controllers
         // GET: EmployeeController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var emp = DbContext.Employees.Find(id);
+            var obj = new EmployeeViewModel();
+            obj.FirstName = emp.FirstName;
+            obj.LastName = emp.LastName;
+            obj.Id = emp.Id;
+            obj.Email = emp.Email;
+            obj.SSN = emp.SSN;
+            obj.Nationality = emp.Nationality;
+            obj.PhoneNumber = emp.PhoneNumber;
+            obj.PhoneNumber = emp.PhoneNumber;
+            obj.JopTitle = emp.JopTitle;
+            obj.SalaryAmount = emp.SalaryAmount;
+            obj.AttendanceTime = emp.AttendanceTime;
+            obj.CheckOutTime = emp.CheckOutTime;
+            obj.Gender = emp.Gender;
+            obj.Address = emp.Address;
+            obj.Notes = emp.Notes;
+            obj.ProfilePicture = emp.ProfilePicture;
+
+            return PartialView("Details", obj);
         }
 
         // GET: EmployeeController/Create
@@ -283,7 +302,7 @@ namespace HrSystem.Controllers
             obj.Address = emp.Address;
             obj.Notes = emp.Notes;
 
-            return View(obj); ;
+            return PartialView(obj); ;
         }
 
         // POST: EmployeeController/Delete/5

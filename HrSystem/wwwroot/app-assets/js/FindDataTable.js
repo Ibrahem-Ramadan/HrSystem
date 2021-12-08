@@ -41,7 +41,9 @@ function FindDataTable(LoadUrl, tableid, IsDataSearch, _pageLength, _SearchObj) 
           
 
         },
-
+        "columnDefs": [
+            { "width": "20%", "targets": 0 }
+        ],
      
         "responsive": true,
         "searching": IsDataSearch,

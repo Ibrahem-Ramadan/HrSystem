@@ -22,6 +22,7 @@ namespace HrSystem.Data
         public virtual DbSet<RolesPermession> RolesPermessions { get; set; }
         public virtual DbSet<ExtraDiscountSetting> ExtraDiscountSettings { get; set; }
         public virtual DbSet<WeeklyHoliday> WeeklyHolidays { get; set; }
+        public virtual DbSet<OfficialHoliday> OfficialHolidays { get; set; }
         
        
         protected override void OnModelCreating(ModelBuilder builder)

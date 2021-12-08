@@ -245,6 +245,27 @@ namespace HrSystem.Data.Migrations
                     b.ToTable("ExtraDiscountSettings", (string)null);
                 });
 
+            modelBuilder.Entity("HrSystem.Models.OfficialHoliday", b =>
+                {
+                    b.Property<int>("HolidayId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HolidayId"), 1L, 1);
+
+                    b.Property<DateTime>("HolidayDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HolidayName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("HolidayId");
+
+                    b.ToTable("OfficialHolidays");
+                });
+
             modelBuilder.Entity("HrSystem.Models.Permissions", b =>
                 {
                     b.Property<int>("PermissionsId")
@@ -324,8 +345,11 @@ namespace HrSystem.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EmployeeId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SSN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -333,7 +357,8 @@ namespace HrSystem.Data.Migrations
 
                     b.Property<string>("VacationTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("VacationType")
                         .IsRequired()
@@ -635,9 +660,7 @@ namespace HrSystem.Data.Migrations
                 {
                     b.HasOne("HrSystem.Models.Employee", "Employee")
                         .WithMany("Vacations")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployeeId");
 
                     b.Navigation("Employee");
                 });

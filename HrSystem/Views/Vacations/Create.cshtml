@@ -1,0 +1,135 @@
+﻿@model HrSystem.Models.Vacation
+
+@{
+	ViewData["Title"] = "Create";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="horizontal-form-layouts">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="content-header">Add	Vacation</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title-wrap bar-success">
+						<h4 class="card-title" id="horz-layout-basic">Vacations Data</h4>
+					</div>
+					<p class="mb-0">This is the basic horizontal form with labels on left and cost estimation form is the default position.</p>
+				</div>
+				<div class="card-body">
+					<div class="px-3">
+						<form asp-action="Create" method="post" class="form form-horizontal" enctype="multipart/form-data">
+							<input type="hidden" id="empId" name="EmployeeId" value="" />
+							<div class="form-body">
+								
+								@*FirstName*@
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="VacationTitle">Vacation Description: </label>
+									<div class="col-md-9">
+										<input asp-for="VacationTitle" class="form-control" />
+										<span asp-validation-for="VacationTitle" class="text-danger"></span>
+
+									</div>
+								</div>
+							
+
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="SSN">Employee SSN: </label>
+									<div class="col-md-9">
+										<input asp-for="SSN" id="ssn"  class="form-control" />
+										<span asp-validation-for="SSN" class="text-danger"></span>
+
+									</div>
+								</div>
+							
+
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="DateFrom">Date From: </label>
+									<div class="col-md-9">
+										<input asp-for="DateFrom" type="date" class="form-control" />
+										<span asp-validation-for="DateFrom" class="text-danger"></span>
+
+									</div>
+								</div>
+						
+								
+								@*EmploymentDate*@
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="DateTo">Date To: </label>
+									<div class="col-md-9">
+										<input asp-for="DateTo" type="date" class="form-control" />
+										<span asp-validation-for="DateTo" class="text-danger"></span>
+
+									</div>
+								</div>
+								
+									@*@*Gender*@
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="VacationType">TYPE: </label>
+									<div class="col-md-9">
+										<select asp-for="VacationType"  class="form-control">
+												<option value="0" selected="" disabled="">Select Type</option>
+												<option value="Officalleave">Officalleave</option>
+												<option value="Sickleave">Sickleave</option>
+												<option value="emergencyleave">emergencyleave</option>
+										</select>
+										<span asp-validation-for="VacationType" class="text-danger"></span>
+
+									</div>
+								</div>
+										@*@*Gender*@
+								<div class="form-group row">
+
+									<label class="col-md-3 label-control" asp-for="Status">Status: </label>
+									<div class="col-md-9">
+										<select asp-for="Status"  class="form-control">
+												<option value="0" selected="" disabled="">Select Type</option>
+												<option value="Officalleave">Bending</option>
+												<option value="Sickleave">Rejected</option>
+												<option value="acceptable">acceptable</option>
+										</select>
+										<span asp-validation-for="Status" class="text-danger"></span>
+
+									</div>
+								</div>
+								
+								
+
+							
+
+
+								<div class="form-actions">
+									<button type="reset" class="btn btn-danger mr-1">
+										<i class="icon-trash"></i> Cancel
+									</button>
+									<button type="submit" class="btn btn-success">
+										<i class="icon-note"></i> Save
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</section>
+
+
+
+@section Scripts {
+    @{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

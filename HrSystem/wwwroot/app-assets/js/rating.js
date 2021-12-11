@@ -11,7 +11,7 @@
     'use strict';
 	$(document).ready(function(){
 
-		$.fn.raty.defaults.path = '../../app-assets/img/raty/';
+		$.fn.raty.defaults.path = '~/app-assets/img/raty/';
 
 		// Default
 		$('#default-star-rating').raty();

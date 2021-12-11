@@ -26,9 +26,10 @@ builder.Services.Configure<SecurityStampValidatorOptions>(options =>
     options.ValidationInterval = TimeSpan.Zero;
 });
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews().AddNewtonsoftJson();
 
+
+builder.Services.AddRazorPages().AddNewtonsoftJson();
 var app = builder.Build();
 
 

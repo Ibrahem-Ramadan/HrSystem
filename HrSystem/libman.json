@@ -1,17 +1,14 @@
 {
   "version": "1.0",
   "defaultProvider": "cdnjs",
-  "libraries": [
-    {
-      "library": "bootbox.js@5.5.2",
-      "destination": "wwwroot/lib/bootbox.js/",
-      "files": [
-        "bootbox.min.js"
-      ]
-    },
-    {
-      "library": "jquery@3.6.0",
-      "destination": "wwwroot/lib/jquery/"
-    }
-  ]
+    "libraries": [
+        {
+            "library": "jquery@3.6.0",
+            "destination": "wwwroot/lib/jquery/"
+        },
+        {
+            "library": "chartist@0.11.4",
+            "destination": "wwwroot/lib/chartist/"
+        }
+    ]
 }

@@ -53,6 +53,8 @@ namespace HrSystem.Controllers
             try
             {
                 var draw = HttpContext.Request.Form["draw"].FirstOrDefault();
+                string order = Request.Form["order[0][column]"];
+                string orderDir = Request.Form["order[0][dir]"];
 
                 // Skip number of Rows count  
                 var start = Request.Form["start"].FirstOrDefault();
@@ -103,6 +105,41 @@ namespace HrSystem.Controllers
                 {
                     varData = varData.Where(m => m.FullName == searchValue);
                 }
+                if (!(string.IsNullOrEmpty(order) && string.IsNullOrEmpty(orderDir)))
+                {
+                    if (order == "0" && orderDir == "asc")
+                    {
+                        varData = varData.OrderBy(p => p.JopTitle);
+                    }
+                    else if (order == "0" && orderDir != "asc")
+                    {
+                        varData = varData.OrderByDescending(p => p.AttendanceTime);
+                    }
+                    if (order == "1" && orderDir == "asc")
+                    {
+                        varData = varData.OrderBy(p => p.SalaryAmount);
+                    }
+                    else if (order == "1" && orderDir != "asc")
+                    {
+                        varData = varData.OrderByDescending(p => p.Gender);
+                    }
+                    if (order == "2" && orderDir == "asc")
+                    {
+                        varData = varData.OrderBy(p => p.FullName);
+                    }
+                    else if (order == "2" && orderDir != "asc")
+                    {
+                        varData = varData.OrderByDescending(p => p.CheckOutTime);
+                    }
+                    if (order == "2" && orderDir == "asc")
+                    {
+                        varData = varData.OrderBy(p => p.PhoneNumber);
+                    }
+                    else if (order == "2" && orderDir != "asc")
+                    {
+                        varData = varData.OrderByDescending(p => p.id);
+                    }
+                }
 
                 //total number of rows counts   
                 recordsTotal = varData.Count();
@@ -119,7 +156,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: EmployeeController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
             var emp = DbContext.Employees.Find(id);
             var obj = new EmployeeViewModel();
@@ -211,6 +248,7 @@ namespace HrSystem.Controllers
 
 
 
+
         // GET: EmployeeController/Edit/5
         [HttpGet]
         public ActionResult Edit(string id)
@@ -224,7 +262,7 @@ namespace HrSystem.Controllers
             obj.Email = emp.Email;
             obj.SSN = emp.SSN;
             obj.Nationality = emp.Nationality;
-            obj.PhoneNumber=emp.PhoneNumber;
+            obj.PhoneNumber = emp.PhoneNumber;
             obj.PhoneNumber = emp.PhoneNumber;
             obj.JopTitle = emp.JopTitle;
             obj.SalaryAmount = emp.SalaryAmount;
@@ -243,11 +281,12 @@ namespace HrSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(string id, EmployeeViewModel newEmployee)
         {
-            try { 
-            var emp = DbContext.Employees.Find(id);
-            if (ModelState.IsValid)
+            try
             {
-               
+                var emp = DbContext.Employees.Find(id);
+                if (ModelState.IsValid)
+                {
+
                     emp.FirstName = newEmployee.FirstName;
                     emp.LastName = newEmployee.LastName;
                     emp.Gender = newEmployee.Gender;
@@ -264,22 +303,22 @@ namespace HrSystem.Controllers
                     emp.CheckOutTime = newEmployee.CheckOutTime;
                     emp.BirthOfDate = newEmployee.BirthOfDate;
                     emp.deptId = newEmployee.deptId;
-                   
-        
-                DbContext.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
 
+                    DbContext.SaveChanges();
+
+                    return RedirectToAction(nameof(Index));
+
+                }
+                ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
+                return View();
             }
-            ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
-            return View();
-        }
             catch
             {
                 ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
                 return View();
-    }
-}
+            }
+        }
 
         // GET: EmployeeController/Delete/5
         public ActionResult Delete(string id)

@@ -4,6 +4,7 @@ using HrSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211208235532_deletePermissionsTableAndItsRelationWithRoles")]
+    partial class deletePermissionsTableAndItsRelationWithRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,7 +55,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Department", b =>
@@ -73,7 +75,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("DeptId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Employee", b =>
@@ -245,7 +247,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExtraDiscountSettings", (string)null);
+                    b.ToTable("ExtraDiscountSettings");
                 });
 
             modelBuilder.Entity("HrSystem.Models.OfficialHoliday", b =>
@@ -266,7 +268,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("HolidayId");
 
-                    b.ToTable("OfficialHolidays", (string)null);
+                    b.ToTable("OfficialHolidays");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Salary", b =>
@@ -294,7 +296,7 @@ namespace HrSystem.Data.Migrations
                     b.HasIndex("employeeId")
                         .IsUnique();
 
-                    b.ToTable("Salaries", (string)null);
+                    b.ToTable("Salaries");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Vacation", b =>
@@ -335,7 +337,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Vacations", (string)null);
+                    b.ToTable("Vacations");
                 });
 
             modelBuilder.Entity("HrSystem.Models.WeeklyHoliday", b =>
@@ -355,7 +357,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeeklyHolidays", (string)null);
+                    b.ToTable("WeeklyHolidays");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

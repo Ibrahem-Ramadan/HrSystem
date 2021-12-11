@@ -18,13 +18,10 @@ namespace HrSystem.Data
         public virtual DbSet<Vacation> Vacations { get; set; }
         public virtual DbSet<Attendance> Attendances { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Permissions> Permissions { get; set; }
-        public virtual DbSet<RolesPermession> RolesPermessions { get; set; }
         public virtual DbSet<ExtraDiscountSetting> ExtraDiscountSettings { get; set; }
         public virtual DbSet<WeeklyHoliday> WeeklyHolidays { get; set; }
         public virtual DbSet<OfficialHoliday> OfficialHolidays { get; set; }
         
-       
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -38,14 +35,7 @@ namespace HrSystem.Data
             builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             builder.Entity<Salary>().HasKey(m => new { m.Year, m.Month, m.employeeId });
 
-            builder.Entity<RolesPermession>().HasKey(c => new { c.RoleId, c.PermissionId });
-
         }
-        
-       
-        public DbSet<HrSystem.ViewModels.EmployeeVM> EmployeeVM { get; set; }
-        
-       
-        public DbSet<HrSystem.ViewModels.EmployeeViewModel> EmployeeViewModel { get; set; }
+                
     }
 }

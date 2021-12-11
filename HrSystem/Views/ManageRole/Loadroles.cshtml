@@ -1,30 +1,42 @@
-﻿@model IEnumerable<EmployeeRole>
+﻿@model List<EmployeeRole>
 
 <table class="table  table-bordered zero-configuration ">
     <thead class="thead-dark">
         <tr>
+            <th>#</th>
             <th>Group Name</th>
-            <th>Show </th>
-            <th>Add</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Operations</th>
+            <th>Operations </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var role in Model)
+        @for (int i = 0; i < Model.Count; i++)
         {
+            <input type="hidden" asp-for="@Model[i].Id" />
             <tr>
-                <td>@role.Name</td>
-                <td> <input type="checkbox" id="item1" name="item"></td>
-                <td> <input type="checkbox" id="item1" name="item"></td>
-                <td> <input type="checkbox" id="item1" name="item"></td>
-                <td> <input type="checkbox" id="item1" name="item"></td>
+                <td class="font-weight-bold">@{var l=i+1;} @l</td>
+                <td class="font-weight-bold">@Model[i].Name</td>
                 <td>
+                    @if(Model[i].Name=="Admin")
+                    {
+                        <button disabled class="btn btn-info col-md-2  pr-3 ">
+                            <i class="icon-note"></i>Manage&nbsp;&nbsp;&nbsp;&nbsp;
+                        </button>
 
-                    <button href="javascript:;" class="btn btn-danger btnDelete" onclick="deleteRole(this)" data-id=@role.Name>
-                        <i class="icon-trash"></i> Delete
-                    </button>
+                        <button disabled  class="btn btn-danger  ml-2">
+                            <i class="icon-trash"></i>Delete
+                        </button>
+                    }
+                    else
+                    {
+                        <a asp-action="Edit" asp-controller="ManageRole"  asp-route-groupId=@Model[i].Id class="btn btn-info col-md-2  pr-3 ">
+                            <i class="icon-note"></i>Manage&nbsp;&nbsp;&nbsp;&nbsp;
+                        </a>
+
+                        <button href="javascript:;" class="btn btn-danger btnDelete ml-2" onclick="deleteRole(this)" data-id=@Model[i].Name>
+                            <i class="icon-trash"></i>Delete
+                        </button>
+                    }
+
                 </td>
             </tr>
         }

@@ -1,0 +1,106 @@
+﻿@model GroupPermissionsViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<section id="configuration">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title-wrap bar-success">
+                        <h4 class="card-title"><span class="text-info">@Model.GroupName </span>Group Permissions</h4>
+                    </div>
+                </div>
+                <div class="card-body collapse show">
+                    <div class="card-block card-dashboard">
+                        <div class="px-3">
+                            <form method="post" asp-action="Edit">
+                                <input type="hidden" asp-for="GroupName">
+                                <div class="form-body">
+                                    <div class="form-group row">
+                                        <table class="table  table-bordered zero-configuration ">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>
+                                                        <label> </label>
+                                                        <input type="checkbox" id="selectAll" class="form-check-input ml-2  p-1" />
+                                                    </th>
+                                                    <th>Module Name</th>
+                                                    <th>View</th>
+                                                    <th>Add</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @for (int i = 0; i < Model.PermissionsModules.Count; i++)
+                                                {
+                                                    <input type="hidden" asp-for="PermissionsModules[i].ModuleName">
+                                                    <tr>
+                                                        <td><input type="checkbox" class="form-check-input ml-2 p-1 selectModule" /></td>
+
+                                                        <td>
+                                                            @Model.PermissionsModules[i].ModuleName
+                                                        </td>
+
+                                                        @for (int j = 0; j < Model.PermissionsModules[i].Permissions.Count; j++)
+                                                        {
+                                                            <input type="hidden" asp-for="PermissionsModules[i].Permissions[j].DisplayValue">
+                                                            <td>
+                                                                <input asp-for="PermissionsModules[i].Permissions[j].IsSelected" value="true" class="form-check-input p-1 ml-2">
+                                                            </td>
+                                                        }
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                           
+                                <a asp-action="Roles" asp-controller="ManageRole" class="btn btn-info col-md-2" >
+                                    <i class="bi bi-check2-square"></i>Back
+                                </a>
+                                <button type="submit" class="btn btn-success col-md-2 float-md-right" >
+                                    <i class="bi bi-check2-square"></i>Save Changes
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+<script>
+
+
+    //select all check boxes in this page
+    $('#selectAll').click(function () {
+         $('input:checkbox').prop('checked', this.checked);
+     });
+
+     //select all check boxes in same row
+     $('td:first-child input[type="checkbox"]').on('change', function(){
+         $(this)
+         .closest('td')
+         .siblings()
+         .find('input[type="checkbox"]').prop('checked', this.checked);
+     });
+
+</script>
+}

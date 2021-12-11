@@ -6,13 +6,11 @@ namespace HrSystem.Models
     {
         public EmployeeRole()
         {
-            RolesPermessions = new List<RolesPermession>();
         }
         public EmployeeRole(string roleName) : base(roleName)
         {
-            RolesPermessions = new List<RolesPermession>();
         }
 
-        public virtual ICollection<RolesPermession> RolesPermessions { get; set; }
+        public string? Dummy { get; set; }
     }
 }

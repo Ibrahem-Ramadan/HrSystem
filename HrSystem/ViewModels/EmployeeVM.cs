@@ -24,9 +24,9 @@ namespace HrSystem.ViewModels
         public TimeSpan CheckOutTime { get; set; }
         [Required]
         public TimeSpan AttendanceTime { get; set; }
-        
 
-      
+        public string GroupsNames { get; set; }
+
 
     }
 }

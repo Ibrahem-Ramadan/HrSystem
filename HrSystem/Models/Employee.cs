@@ -35,25 +35,6 @@ namespace HrSystem.Models
         public virtual ICollection<Vacation> Vacations { get; set; }
         public virtual Salary salary { get; set; }
 
-        //Test
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //[ForeignKey("Group")]
-        //public int GroupId { get; set; }
-        //public virtual Group Group { get; set; }
 
     }
 }

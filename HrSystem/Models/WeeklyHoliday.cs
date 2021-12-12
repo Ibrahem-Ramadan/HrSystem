@@ -12,9 +12,8 @@ namespace HrSystem.Models
         {
 
         }
-        public WeeklyHoliday(int Id, string Day, bool IsHoliday)
+        public WeeklyHoliday(string Day, bool IsHoliday)
         {
-            this.Id = Id;
             this.Day = Day;
             this.IsHoliday = IsHoliday;
         }

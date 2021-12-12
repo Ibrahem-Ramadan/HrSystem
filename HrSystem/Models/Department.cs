@@ -9,8 +9,5 @@ namespace HrSystem.Models
         public string DeptName { get; set; }
         public int WeaklyWorkDays { get; set; }
         public  virtual ICollection<Employee> employees { get; set; }
-
-
-
     }
 }

@@ -1,59 +1,36 @@
-﻿using HrSystem.Data;
+﻿using HrSystem.Constants;
+using HrSystem.Data;
 using HrSystem.Models;
+using HrSystem.Seeds;
 using HrSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
 namespace HrSystem.Controllers
 {
+    [Authorize]
     public class SettingsController : Controller
     {
         public ApplicationDbContext dbContext;
         public SettingsController(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
+            DefaultSettings.SeedGeneralSettings(dbContext);
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
+        [HasPermission("GeneralSetting", "View")]
         public IActionResult General()
         {
             GeneralSettingsViewModel viewModel = new GeneralSettingsViewModel();
             viewModel.extraDiscountSettings = dbContext.ExtraDiscountSettings.FirstOrDefault();
             viewModel.weeklyHolidays = dbContext.WeeklyHolidays.ToList();
-
-            var weekinit = new List<WeeklyHoliday>()
-            {
-                new WeeklyHoliday(1, "Sturday", false),
-                new WeeklyHoliday(2, "Sunday", false),
-                new WeeklyHoliday(3, "Monday", false),
-                new WeeklyHoliday(4, "Tuesday", false),
-                new WeeklyHoliday(5, "Wednesday", false),
-                new WeeklyHoliday(6, "Thursday", false),
-                new WeeklyHoliday(7, "Friday", false),
-
-            };
-
-            ExtraDiscountSetting extradiscountiinit = new ExtraDiscountSetting(1, 0, 0, "Hours");
-
-            if (viewModel.extraDiscountSettings == null)
-            {
-                viewModel.extraDiscountSettings = extradiscountiinit;
-            }
-
-            if (viewModel.weeklyHolidays == null)
-            {
-                viewModel.weeklyHolidays = weekinit;
-            }
-
             return View(viewModel);
         }
 
         [HttpPost]
+        [HasPermission("GeneralSetting", "Edit")]
         public IActionResult General(GeneralSettingsViewModel viewModel)
         {
             if (viewModel is null)

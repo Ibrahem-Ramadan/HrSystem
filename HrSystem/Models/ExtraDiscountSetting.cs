@@ -16,9 +16,8 @@ namespace HrSystem.Models
         {
 
         }
-        public ExtraDiscountSetting(int Id, float Extra, float Discount, string? SettingType)
+        public ExtraDiscountSetting(float Extra, float Discount, string? SettingType)
         {
-            this.Id = Id;
             this.Extra = Extra;
             this.Discount = Discount;
             this.SettingType = SettingType;

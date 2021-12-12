@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div style="margin-top:30px;" id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+        <div class="container">
+            <form method="post" asp-controller="Attendances" asp-action="Import" enctype="multipart/form-data">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                    <button type="submit" class="btn btn-primary">Import</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

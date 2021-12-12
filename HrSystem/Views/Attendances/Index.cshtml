@@ -1,0 +1,120 @@
+﻿@model IEnumerable<HrSystem.Models.Attendance>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<p>
+    <a asp-action="createXl" class="btn btn-primary">Create New</a>
+</p>
+<table class="table table-striped table-bordered zero-configuration mt-40">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeaveTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AttendanceDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FirstName)
+                @Html.DisplayFor(modelItem => item.Employee.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AttendanceDate)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.AttendanceId" class="btn btn-danger mr-1"><i class="icon-trash"></i>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div class="card-body">
+    <div class="px-3">
+        <form class="form form-horizontal" method="post" asp-controller="Attendances" asp-action="Create" enctype="multipart/form-data">
+            <div class="form-body">
+
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="projectinput7">Employee Name : </label>
+                    <div class="col-md-9">
+                        <select name="EmployeeId" class="form-control" id="exampleFormControlSelect1">
+                        @foreach (var item in (List<HrSystem.Models.Employee>)ViewBag.EmployeeId)
+                        {
+                            <option value="@item.Id">@item.FirstName @item.LastName</option>
+                        }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="projectinput9">Date: </label>
+                    <div class="col-md-9">
+                        <div class="position-relative has-icon-left">
+                            <input type="date" id="timesheetinput3" class="form-control" name="AttendanceDate">
+                            <div class="form-control-position">
+                                <i class="ft-message-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class=" row">
+
+                <div class="col-md-12">
+                    <div class=" row form-group">
+                        <label class="col-md-3 label-control">Start time: </label>
+                        <div class="position-relative has-icon-left col-lg-9">
+                            <input type="time" id="timesheetinput5" class="form-control" name="AttendanceTime">
+                            <div class="form-control-position">
+                                <i class="ft-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class=" row form-group">
+                        <label class="col-md-3 label-control">End time: </label>
+                        <div class="position-relative has-icon-left col-lg-9">
+                            <input type="time" id="timesheetinput6" class="form-control" name="LeaveTime">
+                            <div class="form-control-position">
+                                <i class="ft-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+
+                <button type="reset" class="btn btn-danger mr-1">
+                    <i class="icon-trash"></i> Cancel
+                </button>
+
+                <button type="submit" class="btn btn-success">
+                    <i class="icon-note"></i> Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

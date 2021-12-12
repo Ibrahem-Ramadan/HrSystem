@@ -224,7 +224,7 @@ namespace HrSystem.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        //await _signInManager.SignInAsync(user, isPersistent: false);
                         departments = new SelectList(_dbContext.Departments.ToList(), "DeptId", "DeptName");
                         return LocalRedirect(returnUrl);
                     }

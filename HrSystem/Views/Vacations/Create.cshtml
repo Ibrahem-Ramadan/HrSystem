@@ -78,9 +78,9 @@
 									<div class="col-md-9">
 										<select asp-for="VacationType"  class="form-control">
 												<option value="0" selected="" disabled="">Select Type</option>
-												<option value="Officalleave">Officalleave</option>
-												<option value="Sickleave">Sickleave</option>
-												<option value="emergencyleave">emergencyleave</option>
+												<option value="Officalleave">Offical Leave</option>
+												<option value="Sickleave">Sick Leave</option>
+												<option value="emergencyleave">Emergency Leave</option>
 										</select>
 										<span asp-validation-for="VacationType" class="text-danger"></span>
 
@@ -92,10 +92,10 @@
 									<label class="col-md-3 label-control" asp-for="Status">Status: </label>
 									<div class="col-md-9">
 										<select asp-for="Status"  class="form-control">
-												<option value="0" selected="" disabled="">Select Type</option>
-												<option value="Officalleave">Bending</option>
-												<option value="Sickleave">Rejected</option>
-												<option value="acceptable">acceptable</option>
+												<option selected="" disabled="">Select Status</option>
+												<option value="pending">Pending</option>
+												<option value="rejected">Rejected</option>
+												<option value="accepted">Accepted</option>
 										</select>
 										<span asp-validation-for="Status" class="text-danger"></span>
 

@@ -32,6 +32,19 @@ namespace HrSystem.Controllers
             return View(await _roleManager.Roles.ToListAsync());
         }
 
+        public ActionResult searchRoles(string groupName)
+        {
+            if(String.IsNullOrEmpty(groupName))
+            {
+                return PartialView("Loadroles", _roleManager.Roles.ToList());
+            }
+            else
+            {
+                var matchedRoles = _roleManager.Roles.Where(x => x.Name.Contains(groupName)).ToList();
+                return PartialView("Loadroles",matchedRoles);
+            }
+        }
+
         [HasPermission("Groups", "View")]
         public async Task<ActionResult> Loadroles()
         {

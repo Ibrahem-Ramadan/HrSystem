@@ -34,8 +34,7 @@
     <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/css/chartist.min.css">
     <link rel="stylesheet" type="text/css" href="~/app-assets/css/app.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
 
@@ -71,14 +70,12 @@
                                 <li>
                                     <a href="/employee/index" class="menu-item"> <i class="icon-bar"></i> Employees Statistics</a>
                                 </li>
-                                <li>
-                                    <a href="/identity/account/register" class="menu-item">Add Employee</a>
+                                <li class=" nav-item">
+                                    <a href="/identity/account/register"><i class="icon-note"></i><span data-i18n="" class="menu-title">Add Employee</span></a>
                                 </li>
                             </ul>
                         </li>
-                        <li class=" nav-item">
-                            <a href="/identity/account/register"><i class="icon-note"></i><span data-i18n="" class="menu-title">Add Employee</span></a>
-                        </li>
+
                         <li class=" nav-item">
                             <a href="/settings/general">
                                 <i class="icon-pie-chart"></i><span data-i18n="" class="menu-title">
@@ -100,6 +97,9 @@
                             <a href="#"><i class="icon-users"></i><span data-i18n="" class="menu-title">Groups</span></a>
                             <ul class="menu-content">
                                 <li>
+                                    <a href="/managerole/createnewgroup" class="menu-item">New Group</a>
+                                </li>
+                                <li>
                                     <a href="/managerole/roles" class="menu-item">Management</a>
                                 </li>
                                 <li>
@@ -107,8 +107,8 @@
                                 </li>
                             </ul>
                         </li>
-   
-                         <li class=" nav-item">
+
+                        <li class=" nav-item">
                             <a href="/identity/account/logout"><i class="icon-pin"></i><span data-i18n="" class="menu-title">Logout </span></a>
                         </li>
                     </ul>
@@ -181,7 +181,7 @@
                                 *@
 
                                 <a id="dropdownBasic3" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-user-link dropdown-toggle">
-                                    <span class="avatar avatar-online"><img id="navbar-avatar" src="~/ProfilePics/defulte.png"  alt="profilePic" /></span>
+                                    <span class="avatar avatar-online"><img id="navbar-avatar" src="~/ProfilePics/defulte.png" alt="profilePic" /></span>
                                     <p class="d-none">User Settings</p>
                                 </a>
 
@@ -475,51 +475,51 @@
                               class="gradient-timber d-block rounded box-shadow-2"></span>
                     </div>
                 </div>
-        @*        <div class="row p-1">
+                @*        <div class="row p-1">
                     <div class="col mb-3">
-                        <span style="width:50px; height:100px;" data-bg-color="black"
-                              class="bg-black d-block rounded box-shadow-2"></span>
+                    <span style="width:50px; height:100px;" data-bg-color="black"
+                    class="bg-black d-block rounded box-shadow-2"></span>
                     </div>
                     <div class="col mb-3">
-                        <span style="width:50px; height:100px;" data-bg-color="white"
-                              class="bg-white d-block rounded box-shadow-2"></span>
+                    <span style="width:50px; height:100px;" data-bg-color="white"
+                    class="bg-white d-block rounded box-shadow-2"></span>
                     </div>*@
-               @*     <div class="col mb-3">
-                        <span style="width:50px; height:100px;" data-bg-color="primary"
-                              class="bg-primary d-block rounded box-shadow-2"></span>
+                @*     <div class="col mb-3">
+                    <span style="width:50px; height:100px;" data-bg-color="primary"
+                    class="bg-primary d-block rounded box-shadow-2"></span>
                     </div>
                     <div class="col mb-3">
-                        <span style="width:50px; height:100px;" data-bg-color="danger"
-                              class="bg-danger d-block rounded box-shadow-2"></span>
+                    <span style="width:50px; height:100px;" data-bg-color="danger"
+                    class="bg-danger d-block rounded box-shadow-2"></span>
                     </div>*@
-                </div>
-            </div>
-            <hr>
-            <div class="togglebutton">
-                <div class="switch">
-                    <span class="text-bold-400">Compact Menu</span>
-                    <div class="float-right">
-                        <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-                            <input id="cz-compact-menu" type="checkbox" class="custom-control-input cz-compact-menu">
-                            <label for="cz-compact-menu" class="custom-control-label"></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div>
-                <label for="cz-sidebar-width" class="text-bold-400">Sidebar Width</label>
-                <select id="cz-sidebar-width" class="custom-select cz-sidebar-width float-right">
-                    <option value="small">Small</option>
-                    <option value="medium" selected="">Medium</option>
-                    <option value="large">Large</option>
-                </select>
             </div>
         </div>
+        <hr>
+        <div class="togglebutton">
+            <div class="switch">
+                <span class="text-bold-400">Compact Menu</span>
+                <div class="float-right">
+                    <div class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                        <input id="cz-compact-menu" type="checkbox" class="custom-control-input cz-compact-menu">
+                        <label for="cz-compact-menu" class="custom-control-label"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <label for="cz-sidebar-width" class="text-bold-400">Sidebar Width</label>
+            <select id="cz-sidebar-width" class="custom-select cz-sidebar-width float-right">
+                <option value="small">Small</option>
+                <option value="medium" selected="">Medium</option>
+                <option value="large">Large</option>
+            </select>
+        </div>
+    </div>
     </div>
 
 
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
@@ -528,8 +528,9 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/app-assets/vendors/js/core/jquery-3.3.1.min.js"></script>
     <script src="~/app-assets/vendors/js/core/popper.min.js"></script>
-@*    <script src="~/app-assets/vendors/js/core/bootstrap.min.js"></script>
-*@    <script src="~/app-assets/vendors/js/perfect-scrollbar.jquery.min.js"></script>
+    @*    <script src="~/app-assets/vendors/js/core/bootstrap.min.js"></script>
+    *@
+    <script src="~/app-assets/vendors/js/perfect-scrollbar.jquery.min.js"></script>
     <script src="~/app-assets/vendors/js/prism.min.js"></script>
     <script src="~/app-assets/vendors/js/jquery.matchHeight-min.js"></script>
     <script src="~/app-assets/vendors/js/screenfull.min.js"></script>
@@ -537,8 +538,8 @@
     <script src="~/app-assets/js/app-sidebar.js"></script>
     <script src="~/app-assets/js/notification-sidebar.js"></script>
     <script src="~/app-assets/js/customizer.js"></script>
-  
+
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.3/datatables.min.js"></script>
-@await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

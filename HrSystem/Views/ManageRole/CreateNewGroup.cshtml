@@ -50,7 +50,7 @@
                                                     </th>
                                                     <th>
                                                         Edit
-                                                        
+
                                                     </th>
                                                     <th>
                                                         Delete
@@ -73,7 +73,7 @@
                                                         {
                                                             <input type="hidden" asp-for="PermissionsModules[i].Permissions[j].DisplayValue">
                                                             <td>
-                                                                <input asp-for="PermissionsModules[i].Permissions[j].IsSelected" value="true" class="form-check-input p-1 ml-2">
+                                                                <input asp-for="PermissionsModules[i].Permissions[j].IsSelected" value="true" class="form-check-input permCheckbox p-1 ml-2">
                                                             </td>
                                                         }
                                                     </tr>
@@ -100,8 +100,9 @@
     @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootbox.js/bootbox.min.js"></script>
 <script>
-
 
     //select all check boxes in this page
     $('#selectAll').click(function () {
@@ -114,6 +115,18 @@
          .closest('td')
          .siblings()
          .find('input[type="checkbox"]').prop('checked', this.checked);
+     });
+
+     $("#submitBtn").on('click',function(){
+         if($('.permCheckbox').filter(':checked').length == 0 && $('#GroupName').val() != "" )
+         {
+            bootbox.dialog({
+                message: "<b>Sorry :(  Group has no Permissions </b>",
+                className: 'rubberBand animated text-danger',
+                backdrop: true
+            });
+            return false;
+         }
      });
 
 </script>

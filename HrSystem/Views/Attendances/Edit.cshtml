@@ -1,0 +1,72 @@
+﻿@model HrSystem.Models.Attendance
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+<hr />
+
+<div class="card-body">
+    <div class="px-3">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="AttendanceId" />
+
+                    <div class="form-group row">
+                        <label class="col-md-3 label-control">Employee Name : </label>
+                        <div class="col-md-9">
+                            <select name="EmployeeId" class="form-control" id="exampleFormControlSelect1">
+                                @foreach (var item in (List<HrSystem.Models.Employee>)ViewBag.EmployeeId)
+                                {
+                                if (Model.EmployeeId == item.Id)
+                                {
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
+                                }
+                            }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-3 label-control">Date: </label>
+                        <div class="col-md-9">
+                            <div class="position-relative has-icon-left">
+                                <input type="datetime" id="timesheetinput3" class="form-control" name="AttendanceDate" value="@Model.AttendanceDate">
+                                <div class="form-control-position">
+                                    <i class="ft-message-square"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" row form-group">
+                        <label class="col-md-3 label-control">Start time: </label>
+                        <div class="position-relative has-icon-left col-lg-9">
+                            <input type="time" id="timesheetinput5" class="form-control" name="AttendanceTime" value="@Model.AttendanceTime">
+                            <div class="form-control-position">
+                                <i class="ft-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" row form-group">
+                        <label class="col-md-3 label-control">End time: </label>
+                        <div class="position-relative has-icon-left col-lg-9">
+                            <input type="time" id="timesheetinput6" class="form-control" name="LeaveTime" value="@Model.LeaveTime">
+                            <div class="form-control-position">
+                                <i class="ft-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-success" /> |
+                        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

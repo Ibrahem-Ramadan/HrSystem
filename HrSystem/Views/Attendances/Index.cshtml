@@ -42,7 +42,8 @@
                 @Html.DisplayFor(modelItem => item.AttendanceDate)
             </td>
             <td>
-                <a asp-action="Delete" asp-route-id="@item.AttendanceId" class="btn btn-danger mr-1"><i class="icon-trash"></i>Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.AttendanceId" class="btn btn-success">Edit</a> |
+                <button type="button" class="btn btn-danger mr-1" onclick="showUserDeleteBox(@item.AttendanceId)"><i class="icon-trash"></i>Delete</button>
             </td>
         </tr>
 }
@@ -55,7 +56,7 @@
             <div class="form-body">
 
                 <div class="form-group row">
-                    <label class="col-md-3 label-control" for="projectinput7">Employee Name : </label>
+                    <label class="col-md-3 label-control">Employee Name : </label>
                     <div class="col-md-9">
                         <select name="EmployeeId" class="form-control" id="exampleFormControlSelect1">
                         @foreach (var item in (List<HrSystem.Models.Employee>)ViewBag.EmployeeId)
@@ -118,3 +119,28 @@
         </form>
     </div>
 </div>
+@section scripts
+    {
+    <script>
+        function showUserDeleteBox(id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success',
+                        window.location.href = '/Attendances/Delete/' + id
+                    )
+                }
+            })
+        }
+    </script>
+}

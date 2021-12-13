@@ -70,5 +70,62 @@ namespace HrSystem.Controllers
         {
             return View();
         }
+
+        // GET: Attendances/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var attendance = await _context.Attendances.FindAsync(id);
+            if (attendance == null)
+            {
+                return NotFound();
+            }
+            ViewBag.EmployeeId = _context.Employees.ToList();
+            return View(attendance);
+        }
+
+        // POST: Attendances/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,OverTime,Late,AttendanceTime,LeaveTime,AttendanceDate,EmployeeId")] Attendance attendance)
+        {
+            if (id != attendance.AttendanceId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(attendance);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewBag.EmployeeId = _context.Employees.ToList();
+            return View(attendance);
+        }
+
+        // GET: Attendances/Delete/5
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Attendance attendance = _context.Attendances.FirstOrDefault(m => m.AttendanceId == id);
+            if (attendance == null)
+            {
+                return NotFound();
+            }
+            _context.Attendances.Remove(attendance);
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
     }
 }

@@ -10,65 +10,57 @@
 
 <div class="card-body">
     <div class="px-3">
-        <div class="col-md-4">
-            <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="AttendanceId" />
-
-                    <div class="form-group row">
-                        <label class="col-md-3 label-control">Employee Name : </label>
-                        <div class="col-md-9">
-                            <select name="EmployeeId" class="form-control" id="exampleFormControlSelect1">
-                                @foreach (var item in (List<HrSystem.Models.Employee>)ViewBag.EmployeeId)
-                                {
-                                if (Model.EmployeeId == item.Id)
-                                {
-                                    <option value="@item.Id">@item.FirstName @item.LastName</option>
-                                }
-                            }
-                            </select>
-                        </div>
+        <form class="form form-horizontal" method="post" asp-controller="Attendances" asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AttendanceId"/>
+            <div class="form-body">
+                
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="Employee">Employee Name : </label>
+                    <div class="has-icon-left col-md-6">
+                        <select name="EmployeeId" class="form-control" id="Employee">
+                            @foreach (var item in (List<HrSystem.Models.Employee>)ViewBag.EmployeeId){
+                                if (Model.EmployeeId == item.Id){
+                                    <option value="@item.Id">@item.FirstName @item.LastName</option>}}
+                        </select>
                     </div>
-
-                    @{
-                        var data =DateOnly.Parse(DateOnly.FromDateTime(Model.AttendanceDate.Value.ToUniversalTime()).ToString("yyyy-MM-dd"));
-                    <div class="form-group row">
-                        <label class="col-md-3 label-control">Date: </label>
-                        <div class="col-md-9">
-                            <div class="position-relative has-icon-left">
-                                
-                                <input type="date" max=@DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd") class="form-control" name="AttendanceDate"  value="@data.ToShortDateString()">
-                            </div>
-                        </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="Date">Date: </label>
+                    <div class="has-icon-left col-md-6">
+                        <input type="date" id="Date" class="form-control" name="AttendanceDate" value="@Model.AttendanceDate.ToString("yyyy-MM-dd")">
                     </div>
-                    var x = data.ToShortDateString();
-
-                }
-                    <div class=" row form-group">
-                        <label class="col-md-3 label-control">Start time: </label>
-                        <div class="position-relative has-icon-left col-lg-9">
-                            <input type="time" id="timesheetinput5" class="form-control" name="AttendanceTime" value="@Model.AttendanceTime">
-                            <div class="form-control-position">
-                                <i class="ft-clock"></i>
-                            </div>
-                        </div>
+                </div>
+                
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="Start">Start time: </label>
+                    <div class="has-icon-left col-lg-6">
+                        <input type="time" id="Start" class="form-control" name="AttendanceTime" value="@Model.AttendanceTime">
                     </div>
+                </div>
 
-                    <div class=" row form-group">
-                        <label class="col-md-3 label-control">End time: </label>
-                        <div class="position-relative has-icon-left col-lg-9">
-                            <input type="time" id="timesheetinput6" class="form-control" name="LeaveTime" value="@Model.LeaveTime">
-                            <div class="form-control-position">
-                                <i class="ft-clock"></i>
-                            </div>
-                        </div>
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="End">End time: </label>
+                    <div class="has-icon-left col-lg-6">
+                        <input type="time" id="End" class="form-control" name="LeaveTime" value="@Model.LeaveTime">
                     </div>
+                </div>
+            </div>
+            
+            <div class="form-actions center">
+                <button type="reset" class="btn btn-danger mr-1">
+                    <i class="icon-trash"></i> Cancel
+                </button>
 
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-success" /> |
-                        <a asp-action="Index" class="btn btn-primary">Back to List</a>
-                    </div>
-            </form>
-        </div>
+                <button type="submit" class="btn btn-success">
+                    <i class="icon-note"></i> Save
+                </button>
+
+                <button asp-action="Index" class="btn btn-primary">
+                    <i class="icon-note"></i> Back
+                </button>
+            </div>
+        </form>
     </div>
 </div>

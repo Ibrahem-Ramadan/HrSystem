@@ -14,13 +14,13 @@
                 @Html.DisplayNameFor(model => model.Employee)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.AttendanceDate)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AttendanceTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LeaveTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AttendanceDate)
             </th>
             <th></th>
         </tr>
@@ -33,13 +33,13 @@
                 @Html.DisplayFor(modelItem => item.Employee.LastName)
             </td>
             <td>
+                @Html.DisplayName(item.AttendanceDate.ToShortDateString())
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.AttendanceTime)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LeaveTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AttendanceDate)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.AttendanceId" class="btn btn-success">Edit</a> |
@@ -56,9 +56,9 @@
             <div class="form-body">
 
                 <div class="form-group row">
-                    <label class="col-md-3 label-control">Employee Name : </label>
-                    <div class="col-md-9">
-                        <select name="EmployeeId" class="form-control" id="exampleFormControlSelect1">
+                    <label class="col-md-3 label-control" for="Employee">Employee Name : </label>
+                    <div class="has-icon-left col-md-6">
+                        <select name="EmployeeId" class="form-control" id="Employee">
                         @foreach (var item in (List<HrSystem.Models.Employee>)ViewBag.EmployeeId)
                         {
                             <option value="@item.Id">@item.FirstName @item.LastName</option>
@@ -68,46 +68,28 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-3 label-control" for="projectinput9">Date: </label>
-                    <div class="col-md-9">
-                        <div class="position-relative has-icon-left">
-                            <input type="date" id="timesheetinput3" class="form-control" name="AttendanceDate">
-                            <div class="form-control-position">
-                                <i class="ft-message-square"></i>
-                            </div>
-                        </div>
+                    <label class="col-md-3 label-control" for="Date">Date: </label>
+                    <div class="has-icon-left col-md-6">
+                        <input type="date" id="Date" class="form-control" name="AttendanceDate">
                     </div>
                 </div>
 
-            </div>
-            <div class=" row">
-
-                <div class="col-md-12">
-                    <div class=" row form-group">
-                        <label class="col-md-3 label-control">Start time: </label>
-                        <div class="position-relative has-icon-left col-lg-9">
-                            <input type="time" id="timesheetinput5" class="form-control" name="AttendanceTime">
-                            <div class="form-control-position">
-                                <i class="ft-clock"></i>
-                            </div>
-                        </div>
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="Start">Start time: </label>
+                    <div class="has-icon-left col-lg-6">
+                        <input type="time" id="Start" class="form-control" name="AttendanceTime">
                     </div>
                 </div>
 
-                <div class="col-md-12">
-                    <div class=" row form-group">
-                        <label class="col-md-3 label-control">End time: </label>
-                        <div class="position-relative has-icon-left col-lg-9">
-                            <input type="time" id="timesheetinput6" class="form-control" name="LeaveTime">
-                            <div class="form-control-position">
-                                <i class="ft-clock"></i>
-                            </div>
-                        </div>
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="End">End time: </label>
+                    <div class="has-icon-left col-lg-6">
+                        <input type="time" id="End" class="form-control" name="LeaveTime">
                     </div>
                 </div>
             </div>
-            <div class="form-actions">
-
+           
+            <div class="form-actions center">
                 <button type="reset" class="btn btn-danger mr-1">
                     <i class="icon-trash"></i> Cancel
                 </button>
@@ -119,6 +101,7 @@
         </form>
     </div>
 </div>
+
 @section scripts
     {
     <script>

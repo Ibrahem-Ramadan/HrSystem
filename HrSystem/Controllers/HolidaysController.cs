@@ -176,8 +176,12 @@ namespace HrSystem.Controllers
             try
             {
                 var vac = DbContext.OfficialHolidays.Find(vacc.HolidayId);
-                DbContext.OfficialHolidays.Remove(vac);
-                DbContext.SaveChanges();
+                if(vac != null)
+                {
+                    DbContext.OfficialHolidays.Remove(vac);
+                    DbContext.SaveChanges();
+
+                }
 
                 return RedirectToAction(nameof(Index));
             }

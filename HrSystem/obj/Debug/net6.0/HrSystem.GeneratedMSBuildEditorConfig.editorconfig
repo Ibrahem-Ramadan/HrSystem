@@ -8,261 +8,305 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HrSystem
 build_property.RootNamespace = HrSystem
-build_property.ProjectDir = C:\Users\Mahmoud\Documents\GitHub\HrSystem\HrSystem\
+build_property.ProjectDir = F:\ITI Full Stack Web Development with Dot Net Material\GP\HR Sytem\Repository\HrSystem\HrSystem\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Mahmoud\Documents\GitHub\HrSystem\HrSystem
+build_property.MSBuildProjectDirectory = F:\ITI Full Stack Web Development with Dot Net Material\GP\HR Sytem\Repository\HrSystem\HrSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Lockout.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Login.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Logout.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/Register.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/Error.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/_ViewImports.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Areas/Identity/Pages/_ViewStart.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Employee/Create.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Attendances/createXl.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZXNcY3JlYXRlWGwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Attendances/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Attendances/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXR0ZW5kYW5jZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Employee/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Employee/Delete.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Employee/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Employee/Details.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Employee/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Employee/Edit.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Employee/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Employee/Index.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Employee/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Employee/Users.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Employee/Users.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Create.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Holidays/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Delete.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Holidays/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Edit.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Holidays/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Holidays/Index.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Holidays/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9saWRheXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Home/Index.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Home/Privacy.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/ManageRole/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlUm9sZVxDcmVhdGUuY3NodG1s
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/ManageRole/CreateNewGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlUm9sZVxDcmVhdGVOZXdHcm91cC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Shared/Error.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/ManageRole/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlUm9sZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/ManageRole/Loadroles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlUm9sZVxMb2Fkcm9sZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/ManageRole/Roles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFuYWdlUm9sZVxSb2xlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/SalaryReport/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsYXJ5UmVwb3J0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Settings/General.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2V0dGluZ3NcR2VuZXJhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Shared/_LoginPartial.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Create.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/User/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/User/loadUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxsb2FkVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Vacations/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYXRpb25zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Delete.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Vacations/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYXRpb25zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Edit.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Vacations/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYXRpb25zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Vacations/Index.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Vacations/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVmFjYXRpb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/_ViewImports.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/_ViewStart.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mahmoud/Documents/GitHub/HrSystem/HrSystem/Views/Shared/_Layout.cshtml]
+[F:/ITI Full Stack Web Development with Dot Net Material/GP/HR Sytem/Repository/HrSystem/HrSystem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-uyndfuzr5g

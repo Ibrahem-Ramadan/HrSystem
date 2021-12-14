@@ -56,7 +56,7 @@
 
                         <div class="inputBx">
                             <input asp-for="Input.Email" type="text" autocomplete="email" aria-required="true">
-                            <span>Email</span>
+                            <span>Username or Email</span>
                         </div>
                         <div class="mb-2 mt-0">
                              <span asp-validation-for="Input.Email" class="text-dark"></span>
@@ -81,7 +81,7 @@
                             <input type="submit" id="login-submit" value="Log in" />
                         </div>
                         <p>Forgot password? <a id="forgot-password" asp-page="./ForgotPassword">Click Here</a></p>
-                        <p>Don't have an account <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Sign up</a></p>
+                        @*<p>Don't have an account <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Sign up</a></p>*@
                     </form>
                 </div>
             </div>

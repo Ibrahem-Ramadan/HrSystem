@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using HrSystem.Models;
 using HrSystem.ViewModels;
-using Microsoft.AspNetCore.Identity;
 
 namespace HrSystem.Controllers
     
@@ -12,11 +11,9 @@ namespace HrSystem.Controllers
     {
         //constrouctor and register dbContext
         public ApplicationDbContext DbContext;
-        private UserManager<Employee> userManager;
-        public EmployeeController(ApplicationDbContext DbContext, UserManager<Employee> userManager)
+        public EmployeeController(ApplicationDbContext DbContext)
         {
             this.DbContext = DbContext;
-            this.userManager = userManager; 
         }
 
 
@@ -97,11 +94,6 @@ namespace HrSystem.Controllers
                     obj.AttendanceTime = emp.AttendanceTime;
                     obj.CheckOutTime = emp.CheckOutTime;
                     obj.Gender = emp.Gender;
-                    var userroles =  userManager.GetRolesAsync(emp).Result;
-                    foreach(var role in userroles)
-                    {
-                        obj.GroupsNames += role +" - ";
-                    }
                     Data.Add(obj);
                 }
                 var varData = Data.ToList().AsEnumerable();
@@ -191,7 +183,6 @@ namespace HrSystem.Controllers
         public ActionResult Create()
         {
             ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
-
             return View();
         }
 
@@ -235,7 +226,9 @@ namespace HrSystem.Controllers
                         CheckOutTime = newEmployee.CheckOutTime,
                         BirthOfDate = newEmployee.BirthOfDate,
                         deptId = newEmployee.deptId,
-                        ProfilePicture = newEmployee.ProfilePicture
+                        ProfilePicture = newEmployee.ProfilePicture,
+                        Id = Guid.NewGuid().ToString(),
+                        
                     };
                     DbContext.Employees.Add(emp);
                     DbContext.SaveChanges();
@@ -359,8 +352,11 @@ namespace HrSystem.Controllers
             try
             {
                 var emp = DbContext.Employees.Find(id);
-                DbContext.Employees.Remove(emp);
-                DbContext.SaveChanges();
+                if(emp != null)
+                {
+                    DbContext.Employees.Remove(emp);
+                    DbContext.SaveChanges();
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

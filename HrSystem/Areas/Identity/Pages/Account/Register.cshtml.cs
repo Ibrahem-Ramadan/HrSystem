@@ -2,45 +2,38 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
 using HrSystem.Data;
 using HrSystem.Models;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace HrSystem.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<Employee> _signInManager;
-        private readonly UserManager<Employee> _userManager;
-        private readonly IUserStore<Employee> _userStore;
-        private readonly IUserEmailStore<Employee> _emailStore;
+        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly IUserStore<User> _userStore;
+        private readonly IUserEmailStore<User> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
         private readonly ApplicationDbContext _dbContext;
 
-        public SelectList departments { get; set; }
+        public SelectList roles { get; set; }
 
         public RegisterModel(
-            UserManager<Employee> userManager,
-            IUserStore<Employee> userStore,
-            SignInManager<Employee> signInManager,
+            UserManager<User> userManager,
+            IUserStore<User> userStore,
+            SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             ApplicationDbContext dbContext)
@@ -84,16 +77,17 @@ namespace HrSystem.Areas.Identity.Pages.Account
             [Required]
             [MaxLength(50, ErrorMessage = "InValid Length !!")]
             [MinLength(3)]
-            public string FirstName { get; set; }
-
-            [Required]
-            [MaxLength(50, ErrorMessage = "InValid Length !!")]
-            [MinLength(3)]
-            public string LastName { get; set; }
+            public string FullName { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            /// 
+            [Required]
+            [MinLength(3)]
+            [Display(Name = "Username")]
+            public string Username { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -118,95 +112,51 @@ namespace HrSystem.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
-            [RegularExpression(@"^01[0-2]\d{1,8}$", ErrorMessage = "Invalid Phone")]
-            public string PhoneNumber { get; set; }
-            [Required]
-            public double SalaryAmount { get; set; }
-            public string JopTitle { get; set; }
-            public string ProfilePicture { get; set; }
-            [Required]
-            public string Address { get; set; }
-            [Required]
-            public string SSN { get; set; }
-            [Required]
-            public string Nationality { get; set; }
-            public string Notes { get; set; }
-            [Required]
-            public char Gender { get; set; }
-            [Required]
-            public DateTime EmploymentDate { get; set; }
-            [Required]
-            public DateTime BirthOfDate { get; set; }
-            [Required]
-            public TimeSpan CheckOutTime { get; set; }
-            [Required]
-            public TimeSpan AttendanceTime { get; set; }
-            [Required]
-            public int deptId { get; set; }
+
+            [Required(ErrorMessage ="Please Select Role *")]
+            public string RoleName { get; set; }
+            
         }
 
 
         public async Task OnGetAsync(string returnUrl = null)
         {
             
-            departments = new SelectList(_dbContext.Departments.ToList() ,"DeptId", "DeptName");
+            roles = new SelectList(_dbContext.Roles.ToList() ,"Name", "Name");
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(IFormFile ProfilePicture , string returnUrl = null )
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null )
         {
-
-
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Employee()
+                var user = new User()
                 {
-                    FirstName = Input.FirstName,
-                    LastName = Input.LastName,
                     Email = Input.Email,
-                    Gender = Input.Gender,
-                    SalaryAmount = Input.SalaryAmount,
-                    PhoneNumber = Input.PhoneNumber,
-                    EmploymentDate = Input.EmploymentDate,
-                    SSN = Input.SSN,
-                    Address = Input.Address,
-                    JopTitle = Input.JopTitle,
-                    Notes = Input.Notes,
-                    Nationality = Input.Nationality,
-                    AttendanceTime = Input.AttendanceTime,
-                    CheckOutTime = Input.CheckOutTime,
-                    BirthOfDate = Input.BirthOfDate,
-                    deptId = Input.deptId,
+                    UserName = Input.Username,
+                    FullName = Input.FullName,
+                    EmailConfirmed = true
                 };
 
-                if (ProfilePicture != null)
-                {
-                    user.ProfilePicture = Path.GetFileName(ProfilePicture.FileName);
-                    using (FileStream stream = new FileStream(Path.Combine("wwwroot/ProfilePics", user.ProfilePicture), FileMode.Create))
-                    {
-                        ProfilePicture.CopyTo(stream);
+               
 
-                    }
-                }
-                else
-                {
-                    user.ProfilePicture = "defulte.jpg";
-                }
-
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
+
+                    await _userManager.AddToRoleAsync(user, Input.RoleName);
+
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
                     var callbackUrl = Url.Page(
@@ -225,7 +175,7 @@ namespace HrSystem.Areas.Identity.Pages.Account
                     else
                     {
                         //await _signInManager.SignInAsync(user, isPersistent: false);
-                        departments = new SelectList(_dbContext.Departments.ToList(), "DeptId", "DeptName");
+                        roles = new SelectList(_dbContext.Roles.ToList(), "Id", "Name");
                         return LocalRedirect(returnUrl);
                     }
                 }
@@ -236,31 +186,31 @@ namespace HrSystem.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
-            departments = new SelectList(_dbContext.Departments.ToList(), "DeptId", "DeptName");
+            roles = new SelectList(_dbContext.Roles.ToList(), "Name", "Name");
             return Page();
         }
 
-        private Employee CreateUser()
+        private User CreateUser()
         {
             try
             {
-                return Activator.CreateInstance<Employee>();
+                return Activator.CreateInstance<User>();
             }
             catch
             {
-                throw new InvalidOperationException($"Can't create an instance of '{nameof(Employee)}'. " +
-                    $"Ensure that '{nameof(Employee)}' is not an abstract class and has a parameterless constructor, or alternatively " +
+                throw new InvalidOperationException($"Can't create an instance of '{nameof(User)}'. " +
+                    $"Ensure that '{nameof(User)}' is not an abstract class and has a parameterless constructor, or alternatively " +
                     $"override the register page in /Areas/Identity/Pages/Account/Register.cshtml");
             }
         }
 
-        private IUserEmailStore<Employee> GetEmailStore()
+        private IUserEmailStore<User> GetEmailStore()
         {
             if (!_userManager.SupportsUserEmail)
             {
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
-            return (IUserEmailStore<Employee>)_userStore;
+            return (IUserEmailStore<User>)_userStore;
         }
     }
 }

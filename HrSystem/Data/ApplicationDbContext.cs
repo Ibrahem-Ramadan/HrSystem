@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using HrSystem.ViewModels;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HrSystem.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<Employee,EmployeeRole,string>  
+    public class ApplicationDbContext : IdentityDbContext<User, UserRole, string>  
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -27,7 +28,8 @@ namespace HrSystem.Data
             base.OnModelCreating(builder);
 
             builder.Entity<Employee>().ToTable("Employees");
-            builder.Entity<EmployeeRole>().ToTable("Roles");
+            builder.Entity<User>().ToTable("Users");
+            builder.Entity<UserRole>().ToTable("Roles");
             builder.Entity<IdentityUserRole<string>>().ToTable("UsersRoles");
             builder.Entity<IdentityUserClaim<string>>().ToTable("UsersClaims");
             builder.Entity<IdentityUserToken<string>>().ToTable("UsersTokens");
@@ -36,6 +38,19 @@ namespace HrSystem.Data
             builder.Entity<Salary>().HasKey(m => new { m.Year, m.Month, m.employeeId });
 
         }
-                
+
+        //protected override void ConfigureConventions(ModelConfigurationBuilder builder)
+        //{
+        //    builder.Properties<DateOnly>()
+        //        .HaveConversion<DateOnlyConverter>()
+        //        .HaveColumnType("date");
+        //}
+        //public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
+        //{
+        //    public DateOnlyConverter() : base(
+        //            d => d.ToDateTime(TimeOnly.MinValue),
+        //            d => DateOnly.FromDateTime(d))
+        //    { }
+        //}
     }
 }

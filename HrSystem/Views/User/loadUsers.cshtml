@@ -1,0 +1,50 @@
+﻿@model List<UserRolesViewModel>
+
+<table class="table  table-bordered zero-configuration ">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Full Name </th>
+            <th>Email </th>
+            <th>Groups </th>
+            
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <input type="hidden" asp-for="@Model[i].user.Id" />
+            <tr>
+                <td class="font-weight-bold">@{
+                        var l = i + 1;
+                    } @l</td>
+                <td class="">@Model[i].user.UserName</td>
+                <td class="">@Model[i].user.FullName</td>
+                <td class="">@Model[i].user.Email</td>
+                <td class="">
+                    <ul>
+                        @foreach(var role in Model[i].roles)
+                        {
+                            <li>@role</li>
+                        }
+
+                    </ul>
+                </td>
+                
+
+                <td>
+                    <a asp-action="Edit" asp-controller="User" asp-route-userId=@Model[i].user.Id class="btn btn-info col-md-2 pr-5 ">
+                            <i  class="icon-note" ></i> Edit 
+                    </a>
+
+                    <a  href="javascript:;" class="btn btn-danger btnDelete ml-2" onclick="deleteUser(this)" data-id='["@Model[i].user.Id","@Model[i].user.UserName"]'>
+                        <i class="icon-trash"></i>Delete
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

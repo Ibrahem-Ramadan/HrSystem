@@ -27,7 +27,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+                var date = item.AttendanceDate.Value.ToShortDateString() ?? string.Empty;
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Employee.FirstName)
                 @Html.DisplayFor(modelItem => item.Employee.LastName)
@@ -39,7 +40,9 @@
                 @Html.DisplayFor(modelItem => item.LeaveTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AttendanceDate)
+                
+                <label asp-for=@date> @date</label>
+                
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.AttendanceId" class="btn btn-success">Edit</a> |

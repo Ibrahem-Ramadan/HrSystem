@@ -15,10 +15,10 @@ namespace HrSystem.Controllers
     [Authorize]
     public class ManageRoleController : Controller
     {
-        private readonly UserManager<Employee> _userManager;
-        private readonly RoleManager<EmployeeRole> _roleManager;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<UserRole> _roleManager;
         ApplicationDbContext _dbContext;
-        public ManageRoleController(ApplicationDbContext dbContext, UserManager<Employee> userManager, RoleManager<EmployeeRole> roleManager)
+        public ManageRoleController(ApplicationDbContext dbContext, UserManager<User> userManager, RoleManager<UserRole> roleManager)
         {
             this._dbContext = dbContext;
             this._userManager = userManager;
@@ -49,42 +49,6 @@ namespace HrSystem.Controllers
         public async Task<ActionResult> Loadroles()
         {
             return PartialView(await _roleManager.Roles.ToListAsync());
-        }
-
-        [HasPermission("Groups", "Add")]
-        public ActionResult AssignUserToRole()
-        {
-            ViewBag.Roles = new SelectList(_dbContext.Roles, "Id", "Name");
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [HasPermission("Groups", "Add")]
-        public async Task<IActionResult> AssignUserToRole(EmployeeRoleViewModel EmpRole)
-        {
-
-            try
-            {
-                var user = _dbContext.Employees.Where(emp => emp.SSN == EmpRole.SSN && emp.Email == EmpRole.Email).SingleOrDefault();
-                if (user != null)
-                {
-                    var role = await _roleManager.FindByIdAsync(EmpRole.RoleId);
-                    await _userManager.AddToRoleAsync(user, role.Name);
-
-                    ViewBag.Roles = new SelectList(_dbContext.Roles, "Id", "Name");
-                    return RedirectToAction("Create");
-                }
-                else
-                {
-                    return NotFound();
-                }
-
-            }
-            catch
-            {
-                return View();
-            }
         }
 
         [HttpGet]
@@ -219,7 +183,7 @@ namespace HrSystem.Controllers
                 else
                 {
 
-                    if (_roleManager.CreateAsync(new EmployeeRole(NewGroup.GroupName)).Result.Succeeded)
+                    if (_roleManager.CreateAsync(new UserRole(NewGroup.GroupName)).Result.Succeeded)
                     {
                         var role = await _roleManager.FindByNameAsync(NewGroup.GroupName);
                         foreach (var module in NewGroup.PermissionsModules)

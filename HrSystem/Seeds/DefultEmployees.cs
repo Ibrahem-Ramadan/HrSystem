@@ -8,27 +8,13 @@ namespace HrSystem.Seeds
     public static class DefultEmployees
     {
         //Seeding Hr user
-        public static async Task SeedHrUserAsync(UserManager<Employee> userManager)
+        public static async Task SeedHrUserAsync(UserManager<User> userManager)
         {
-            var HrUser = new Employee
+            var HrUser = new User
             {
-                UserName = "hr@pioneers-solutions.com",
+                UserName = "hr",
                 Email = "hr@pioneers-solutions.com",
-                FirstName = "hr",
-                LastName = "hr",
-                Gender = 'M',
-                SalaryAmount = 00,
-                PhoneNumber = "01000000000",
-                EmploymentDate = DateTime.Now.AddYears(-3),
-                SSN = "2955887748561",
-                Address = "hr",
-                JopTitle = "hr",
-                Notes = "hr",
-                Nationality = "hr",
-                AttendanceTime = new TimeSpan(9,0,0),
-                CheckOutTime = new TimeSpan(17, 0, 0),
-                BirthOfDate = DateTime.Now.AddYears(-20),
-                deptId = 3,
+                FullName ="Defualt Hr"
             };
 
             var user = await userManager.FindByEmailAsync(HrUser.Email);
@@ -40,27 +26,15 @@ namespace HrSystem.Seeds
             }
         }
 
-        public static async Task SeedAdminUserAsync(UserManager<Employee> userManager, RoleManager<EmployeeRole> roleManger)
+        public static async Task SeedAdminUserAsync(UserManager<User> userManager, RoleManager<UserRole> roleManger)
         {
-            var adminUser = new Employee
+            var adminUser = new User
             {
-                UserName = "admin@pioneers-solutions.com",
+                UserName = "admin",
                 Email = "admin@pioneers-solutions.com",
-                FirstName = "admin",
-                LastName = "admin",
-                Gender = 'M',
-                SalaryAmount = 00,
-                PhoneNumber = "01000000000",
-                EmploymentDate = DateTime.Now.AddYears(-3),
-                SSN = "2955887748562",
-                Address = "admin",
-                JopTitle = "admin",
-                Notes = "admin",
-                Nationality = "admin",
-                AttendanceTime = new TimeSpan(9, 0, 0),
-                CheckOutTime = new TimeSpan(17, 0, 0),
-                BirthOfDate = DateTime.Now.AddYears(-40),
-                deptId = 3,
+                FullName="Default Admin",
+                EmailConfirmed=true
+
             };
 
             var user = await userManager.FindByEmailAsync(adminUser.Email);
@@ -74,7 +48,7 @@ namespace HrSystem.Seeds
             await roleManger.SeedClaimsForAdminUser();
         }
 
-        private static async Task SeedClaimsForAdminUser(this RoleManager<EmployeeRole> roleManager)
+        private static async Task SeedClaimsForAdminUser(this RoleManager<UserRole> roleManager)
         {
             var adminRole = await roleManager.FindByNameAsync(Groups.Admin.ToString());
             //seed Default Claims For Admin User
@@ -87,7 +61,7 @@ namespace HrSystem.Seeds
             await roleManager.AddPermissionClaims(adminRole, Modules.OfficialHolidays.ToString());
         }
 
-        public static async Task AddPermissionClaims(this RoleManager<EmployeeRole> roleManager, EmployeeRole role, string module)
+        public static async Task AddPermissionClaims(this RoleManager<UserRole> roleManager, UserRole role, string module)
         {
             var allClaims = await roleManager.GetClaimsAsync(role);
             var allPermissions = Permissions.GeneratePermissionsList();

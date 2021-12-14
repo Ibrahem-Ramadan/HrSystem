@@ -2,12 +2,12 @@
 
 namespace HrSystem.Models
 {
-    public class EmployeeRole:IdentityRole
+    public class UserRole:IdentityRole
     {
-        public EmployeeRole()
+        public UserRole()
         {
         }
-        public EmployeeRole(string roleName) : base(roleName)
+        public UserRole(string roleName) : base(roleName)
         {
         }
 

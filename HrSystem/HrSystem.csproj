@@ -11,6 +11,7 @@
     <PackageReference Include="AspNetCore.Mvc.SelectList" Version="1.2.14" />
     <PackageReference Include="ChartistJS" Version="0.11.3" />
     <PackageReference Include="datatables.net-dt" Version="1.11.3" />
+    <PackageReference Include="EPPlus" Version="4.5.2.1" />
     <PackageReference Include="jQuery" Version="3.6.0" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.0" />

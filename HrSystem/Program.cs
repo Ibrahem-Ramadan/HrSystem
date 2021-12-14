@@ -16,7 +16,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
-builder.Services.AddIdentity<Employee,EmployeeRole>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddIdentity<User, UserRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders()
     .AddDefaultUI();
@@ -53,11 +53,11 @@ var logger = loggerFactory.CreateLogger("app");
 
 try
 {
-    var userManager = services.GetRequiredService<UserManager<Employee>>();
-    var roleManager = services.GetRequiredService<RoleManager<EmployeeRole>>();
+    var userManager = services.GetRequiredService<UserManager<User>>();
+    var roleManager = services.GetRequiredService<RoleManager<UserRole>>();
 
     await DefultGroups.SeedRolesAsync(roleManager);
-    await DefultEmployees.SeedHrUserAsync(userManager);
+    //await DefultEmployees.SeedHrUserAsync(userManager);
     await DefultEmployees.SeedAdminUserAsync(userManager, roleManager);
 
     logger.LogInformation("Data seeded");

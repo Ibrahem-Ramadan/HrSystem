@@ -1,6 +1,6 @@
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<Employee> SignInManager
-@inject UserManager<Employee> UserManager
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +76,7 @@
                                     <a href="/employee/index" class="menu-item"> <i class="icon-bar"></i> Employees Statistics</a>
                                 </li>
                                 <li class=" nav-item">
-                                    <a href="/identity/account/register"><i class="icon-note"></i><span data-i18n="" class="menu-title">Add Employee</span></a>
+                                    <a href="/employee/create"><i class="icon-note"></i><span data-i18n="" class="menu-title">Add Employee</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -99,6 +99,17 @@
                             <a href="/SalaryReport/index"><i class="icon-layers"></i><span data-i18n="" class="menu-title">Salary report</span></a>
                         </li>
                         <li class="has-sub nav-item">
+                            <a href="#"><i class="icon-users"></i><span data-i18n="" class="menu-title"> Users</span></a>
+                            <ul class="menu-content">
+                                <li>
+                                    <a href="/user/index" class="menu-item"> <i class="icon-bar"></i> System Users</a>
+                                </li>
+                                <li class=" nav-item">
+                                    <a href="/identity/account/register"><i class="icon-note"></i><span data-i18n="" class="menu-title">Add User</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub nav-item">
                             <a href="#"><i class="icon-users"></i><span data-i18n="" class="menu-title">Groups</span></a>
                             <ul class="menu-content">
                                 <li>
@@ -106,9 +117,6 @@
                                 </li>
                                 <li>
                                     <a href="/managerole/roles" class="menu-item">Management</a>
-                                </li>
-                                <li>
-                                    <a href="/managerole/assignusertoRole" class="menu-item"> <i class="icon-bar"></i> Assign Group</a>
                                 </li>
                             </ul>
                         </li>

@@ -30,18 +30,20 @@
                         </div>
                     </div>
 
+                    @{
+                        var data =DateOnly.Parse(DateOnly.FromDateTime(Model.AttendanceDate.Value.ToUniversalTime()).ToString("yyyy-MM-dd"));
                     <div class="form-group row">
                         <label class="col-md-3 label-control">Date: </label>
                         <div class="col-md-9">
                             <div class="position-relative has-icon-left">
-                                <input type="datetime" id="timesheetinput3" class="form-control" name="AttendanceDate" value="@Model.AttendanceDate">
-                                <div class="form-control-position">
-                                    <i class="ft-message-square"></i>
-                                </div>
+                                
+                                <input type="date" max=@DateOnly.FromDateTime(DateTime.Now).ToString("yyyy-MM-dd") class="form-control" name="AttendanceDate"  value="@data.ToShortDateString()">
                             </div>
                         </div>
                     </div>
+                    var x = data.ToShortDateString();
 
+                }
                     <div class=" row form-group">
                         <label class="col-md-3 label-control">Start time: </label>
                         <div class="position-relative has-icon-left col-lg-9">

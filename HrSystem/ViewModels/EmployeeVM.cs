@@ -6,27 +6,17 @@ namespace HrSystem.ViewModels
     {
 
         public string id { get; set; }
+        [Required]
         public string FullName { get; set; }
-       
-      
-   
+        [Required]
         public string PhoneNumber { get; set; }
         [Required]
         public double SalaryAmount { get; set; }
-        [Required]
-        public string JopTitle { get; set; }
+        public string? JopTitle { get; set; }
       
-       
-        public char Gender { get; set; }
-        [Required]
-
-     
-        public TimeSpan CheckOutTime { get; set; }
-        [Required]
-        public TimeSpan AttendanceTime { get; set; }
-
-        public string GroupsNames { get; set; }
-
+        public char? Gender { get; set; }
+        public TimeSpan? CheckOutTime { get; set; }
+        public TimeSpan ?AttendanceTime { get; set; }
 
     }
 }

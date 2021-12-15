@@ -49,18 +49,20 @@
             </div>
             
             <div class="form-actions center">
-                <button type="reset" class="btn btn-danger mr-1">
-                    <i class="icon-trash"></i> Cancel
-                </button>
-
                 <button type="submit" class="btn btn-success">
                     <i class="icon-note"></i> Save
                 </button>
 
-                <button asp-action="Index" class="btn btn-primary">
-                    <i class="icon-note"></i> Back
+                <button asp-action="Index" class="btn btn-danger mr-1">
+                    <i class="icon-trash"></i> Cancel
                 </button>
             </div>
         </form>
     </div>
 </div>
+
+@section scripts{
+<script>
+    var x = document.getElementById("Date").max ="@DateTime.Now.ToString("yyyy-MM-dd")";
+</script>
+}

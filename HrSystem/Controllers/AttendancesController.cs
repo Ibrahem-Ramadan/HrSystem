@@ -3,6 +3,7 @@ using HrSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
+using X.PagedList;
 
 namespace HrSystem.Controllers
 {
@@ -45,10 +46,25 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances
-        public IActionResult Index()
+        public IActionResult Index(int? page,DateTime? search)
+        {
+            var pageNumber = page ?? 1;
+            
+            if (search != null)
+            {
+                return View(_context.Attendances.OrderByDescending(x => x.AttendanceDate)
+                .Include(a => a.Employee).Where(b =>
+                b.AttendanceDate == search).ToPagedList(pageNumber, 15));
+            }
+
+            return View(_context.Attendances.OrderByDescending(x => x.AttendanceDate)
+            .Include(a => a.Employee).ToPagedList(pageNumber, 15));
+        }
+        // GET: Attendances/Create
+        public IActionResult Create()
         {
             ViewBag.EmployeeId = _context.Employees.ToList();
-            return View(_context.Attendances.Include(a => a.Employee).ToList());
+            return View();
         }
 
         // POST: Attendances/Create
@@ -62,13 +78,7 @@ namespace HrSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(attendance);
-        }
-
-        // GET: Attendances/CreateXl
-        public IActionResult createXl()
-        {
-            return View();
+            return RedirectToAction(nameof(Create));
         }
 
         // GET: Attendances/Edit/5
@@ -91,7 +101,7 @@ namespace HrSystem.Controllers
         // POST: Attendances/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,OverTime,Late,AttendanceTime,LeaveTime,AttendanceDate,EmployeeId")] Attendance attendance)
+        public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,EmployeeId")] Attendance attendance)
         {
             if (id != attendance.AttendanceId)
             {
@@ -104,8 +114,7 @@ namespace HrSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.EmployeeId = _context.Employees.ToList();
-            return View(attendance);
+            return RedirectToAction(nameof(Edit));
         }
 
         // GET: Attendances/Delete/5
@@ -126,6 +135,5 @@ namespace HrSystem.Controllers
 
             return RedirectToAction("index");
         }
-
     }
 }

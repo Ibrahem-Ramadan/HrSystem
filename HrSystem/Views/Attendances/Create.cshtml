@@ -1,0 +1,103 @@
+﻿@model IEnumerable<HrSystem.Models.Attendance>
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*ADD : Attendances*@
+
+<div class="card-header">
+    <div class="card-title-wrap bar-success">
+        <h4 class="card-title">ADD : Attendances</h4>
+    </div>
+</div>
+
+<div class="card-body">
+    <div class="px-3">
+        <form class="form form-horizontal" method="post" asp-controller="Attendances" asp-action="Create" enctype="multipart/form-data">
+            <div class="form-body">
+
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="Employee">Employee Name : </label>
+                    <div class="has-icon-left col-md-6">
+                        <select name="EmployeeId" class="form-control" id="Employee">
+                            @foreach (var item in (List<HrSystem.Models.Employee>)ViewBag.EmployeeId)
+                            {
+                                <option value="@item.Id">@item.FirstName @item.LastName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="Date">Date: </label>
+                    <div class="has-icon-left col-md-6">
+                        <input type="date" id="Date" class="form-control" name="AttendanceDate">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="Start">Start time: </label>
+                    <div class="has-icon-left col-lg-6">
+                        <input type="time" id="Start" class="form-control" name="AttendanceTime">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-3 label-control" for="End">End time: </label>
+                    <div class="has-icon-left col-lg-6">
+                        <input type="time" id="End" class="form-control" name="LeaveTime">
+                    </div>
+                </div>
+            </div>
+           
+            <div class="form-actions center">
+                <button type="submit" class="btn btn-success">
+                    <i class="icon-note"></i> Save
+                </button>
+
+                <button asp-action="Index" class="btn btn-danger mr-1">
+                    <i class="icon-trash"></i> Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*ADD : Attendances With Excel*@
+
+<div class="card-header">
+    <div class="card-title-wrap bar-success">
+        <h4 class="card-title">ADD : Attendances With Excel Sheet</h4>
+    </div>
+</div>
+
+<div class="card-body jumbotron">
+    <div class="px-3">
+        <form class="form form-horizontal" method="post" asp-controller="Attendances" asp-action="Import" enctype="multipart/form-data">
+            <div class="form-body">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="file">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+            <div class="form-actions center">
+                <button type="submit" class="btn btn-success">
+                    <i class="icon-note"></i> Import
+                </button>
+
+                <a href="/app-assets/Sample.xlsx" class="btn btn-success mr-1">Download Sample</a>
+            
+                <button asp-action="Index" class="btn btn-danger mr-1">
+                    <i class="icon-trash"></i> Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+<script>
+    var x = document.getElementById("Date").max ="@DateTime.Now.ToString("yyyy-MM-dd")";
+</script>
+}

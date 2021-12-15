@@ -31,6 +31,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
     <PackageReference Include="Mvc.JQuery.Datatables" Version="1.5.56" />
     <PackageReference Include="Mvc.JQuery.DataTables.AspNetCore" Version="1.5.56" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.1.0" />
   </ItemGroup>
 
 </Project>

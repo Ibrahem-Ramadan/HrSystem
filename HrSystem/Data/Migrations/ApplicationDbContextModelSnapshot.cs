@@ -24,25 +24,26 @@ namespace HrSystem.Data.Migrations
 
             modelBuilder.Entity("HrSystem.Models.Attendance", b =>
                 {
-                    b.Property<int?>("AttendanceId")
+                    b.Property<int>("AttendanceId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("AttendanceId"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AttendanceId"), 1L, 1);
 
-                    b.Property<DateTime?>("AttendanceDate")
+                    b.Property<DateTime>("AttendanceDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan?>("AttendanceTime")
+                    b.Property<TimeSpan>("AttendanceTime")
                         .HasColumnType("time");
 
                     b.Property<string>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<TimeSpan?>("Late")
                         .HasColumnType("time");
 
-                    b.Property<TimeSpan?>("LeaveTime")
+                    b.Property<TimeSpan>("LeaveTime")
                         .HasColumnType("time");
 
                     b.Property<TimeSpan?>("OverTime")
@@ -52,7 +53,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Attendances", (string)null);
+                    b.ToTable("Attendances");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Department", b =>
@@ -72,7 +73,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("DeptId");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Employee", b =>
@@ -161,7 +162,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExtraDiscountSettings", (string)null);
+                    b.ToTable("ExtraDiscountSettings");
                 });
 
             modelBuilder.Entity("HrSystem.Models.OfficialHoliday", b =>
@@ -182,7 +183,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("HolidayId");
 
-                    b.ToTable("OfficialHolidays", (string)null);
+                    b.ToTable("OfficialHolidays");
                 });
 
             modelBuilder.Entity("HrSystem.Models.Salary", b =>
@@ -210,7 +211,7 @@ namespace HrSystem.Data.Migrations
                     b.HasIndex("employeeId")
                         .IsUnique();
 
-                    b.ToTable("Salaries", (string)null);
+                    b.ToTable("Salaries");
                 });
 
             modelBuilder.Entity("HrSystem.Models.User", b =>
@@ -350,7 +351,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Vacations", (string)null);
+                    b.ToTable("Vacations");
                 });
 
             modelBuilder.Entity("HrSystem.Models.WeeklyHoliday", b =>
@@ -370,7 +371,7 @@ namespace HrSystem.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeeklyHolidays", (string)null);
+                    b.ToTable("WeeklyHolidays");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -483,7 +484,9 @@ namespace HrSystem.Data.Migrations
                 {
                     b.HasOne("HrSystem.Models.Employee", "Employee")
                         .WithMany("Attendances")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Employee");
                 });

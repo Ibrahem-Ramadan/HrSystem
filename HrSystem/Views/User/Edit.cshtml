@@ -1,5 +1,4 @@
-﻿
-@model User
+﻿@model EditUserViewModel
 @{
     ViewData["Title"] = "Edit";
 }
@@ -15,67 +14,73 @@
                 </div>
                 <div class="card-body">
                     <div class="px-3">
-                            <form asp-action="Edit" method="post" class="form form-horizontal" enctype="multipart/form-data">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-body">
+                        <form asp-action="Edit" method="post" class="form form-horizontal" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-body">
 
-                                    <input type="hidden" asp-for="Id" />
-                                    <div class="form-group row">
-                                        <label class="col-md-3 label-control" asp-for="FullName">Full Name : </label>
-                                        <div class="col-md-9">
-                                            <input type="text" asp-for="FullName"  class="form-control">
-                                            <span asp-validation-for="FullName" class="text-danger"></span>
-                                        </div>
+                                <input type="hidden" asp-for="User.Id" />
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" asp-for="User.FullName">Full Name : </label>
+                                    <div class="col-md-9">
+                                        <input type="text" asp-for="User.FullName" class="form-control">
+                                        <span asp-validation-for="User.FullName" class="text-danger"></span>
                                     </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 label-control" asp-for="UserName">Username : </label>
-                                        <div class="col-md-9">
-                                            <input type="text" asp-for="UserName" class="form-control">
-                                            <span asp-validation-for="UserName" class="text-danger"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 label-control" asp-for="Email">Email : </label>
-                                        <div class="col-md-9">
-                                            <input type="text" asp-for="Email" class="form-control">
-                                            <span asp-validation-for="Email" class="text-danger"></span>
-                                        </div>
-                                    </div>
+                                </div>
 
                                 <div class="form-group row">
-                                    <label class="col-md-3 label-control" asp-for="PhoneNumber">Phone : </label>
+                                    <label class="col-md-3 label-control" asp-for="User.UserName">Username : </label>
                                     <div class="col-md-9">
-                                        <input type="text" asp-for="PhoneNumber" class="form-control">
-                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                        <input type="text" asp-for="User.UserName" class="form-control">
+                                        <span asp-validation-for="User.UserName" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" asp-for="User.Email">Email : </label>
+                                    <div class="col-md-9">
+                                        <input type="text" asp-for="User.Email" class="form-control">
+                                        <span asp-validation-for="User.Email" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" asp-for="User.PhoneNumber">Phone : </label>
+                                    <div class="col-md-9">
+                                        <input type="text" asp-for="User.PhoneNumber" class="form-control">
+                                        <span asp-validation-for="User.PhoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
 
 
-@*                                    <div class="form-group row">
-                                        <label class="col-md-3 label-control">Roles: </label>
-                                        <div class="col-md-9">
-                                            <select asp-for="Input.RoleName" asp-items="Model.roles" class="form-control">
-                                                <option selected="" disabled="">Select Role</option>
-                                            </select>
-                                        </div>
-                                    </div>*@
+                                <div class="form-group row">
+                                    <label class="col-md-3 mr-3 label-control">Roles: </label>
+                                    <div class="col-md-9 row">
+                                        @for (int i = 0; i < Model.Roles.Count; i++)
+                                        {
+                                            <div class="col-md-3 ">
+                                                <input type="hidden" asp-for=@Model.Roles[i].DisplayValue>
+                                                <input asp-for=@Model.Roles[i].IsSelected class="form-check-input"> @Model.Roles[i].DisplayValue
+                                            </div>
 
+                                        }
 
-                                    <div class="form-actions">
-                                        <button type="button" class="btn btn-danger mr-1">
-                                            <i class="icon-trash"></i> Cancel
-                                        </button>
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="icon-note"></i> Save
-                                        </button>
                                     </div>
                                 </div>
-                            </form>
+
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-danger mr-1">
+                                        <i class="icon-trash"></i> Cancel
+                                    </button>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="icon-note"></i> Save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </div>

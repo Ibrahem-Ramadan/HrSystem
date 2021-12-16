@@ -8,11 +8,13 @@ namespace HrSystem.Controllers
 {
     public class UserController : Controller
     {
-        private UserManager<User> userManager;
+        readonly private UserManager<User> userManager;
+        readonly private RoleManager<UserRole> roleManager;
 
-        public UserController(UserManager<User> _userManager)
+        public UserController(UserManager<User> _userManager, RoleManager<UserRole> _roleManager)
         {
             this.userManager = _userManager;
+            this.roleManager = _roleManager;
         }
 
         // GET: User
@@ -61,28 +63,56 @@ namespace HrSystem.Controllers
                 return PartialView("Loadusers", userRoles);
             }
         }
-      
+
         // GET: User/Edit/5
-        public async Task<ActionResult> EditAsync(string userId)
+        public async Task<ActionResult> Edit(string userId)
         {
-            return View(await userManager.FindByIdAsync(userId));
+            var user = await userManager.FindByIdAsync(userId);
+            var allRoles = roleManager.Roles.Select(r => r.Name).ToList();
+            EditUserViewModel editUserViewModel = new EditUserViewModel();
+            editUserViewModel.User = user;
+            foreach (var role in allRoles)
+            {
+                if (await userManager.IsInRoleAsync(user, role))
+                    editUserViewModel.Roles.Add(new CheckBoxViewModel { DisplayValue = role, IsSelected = true });
+                else
+                    editUserViewModel.Roles.Add(new CheckBoxViewModel { DisplayValue = role, IsSelected = false });
+            }
+
+
+            return View(editUserViewModel);
         }
 
         // POST: User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(User user)
+        public async Task<ActionResult> Edit(EditUserViewModel editUserViewModel)
         {
             try
             {
-              var oldUser = await userManager.FindByIdAsync(user.Id);
-               if (oldUser != null)
+              var oldUser = await userManager.FindByIdAsync(editUserViewModel.User.Id);
+              var selectedRoles = editUserViewModel.Roles.Where(c=>c.IsSelected).Select(r=>r.DisplayValue).ToList();
+
+                if (oldUser != null)
                 {
-                    oldUser.Email = user.Email;
-                    oldUser.FullName = user.FullName;
-                    oldUser.PhoneNumber = user.PhoneNumber;
-                    oldUser.UserName = user.UserName;
+                    oldUser.Email = editUserViewModel.User.Email;
+                    oldUser.FullName = editUserViewModel.User.FullName;
+                    oldUser.PhoneNumber = editUserViewModel.User.PhoneNumber;
+                    oldUser.UserName = editUserViewModel.User.UserName;
                     await userManager.UpdateAsync(oldUser);
+
+                    var userRoles = await userManager.GetRolesAsync(oldUser);
+                    if (userRoles.Count != 0)
+                    {
+                        foreach (var role in userRoles)
+                            await userManager.RemoveFromRoleAsync(oldUser, role);
+
+                    }
+
+                    if(selectedRoles.Count != 0)
+                    {
+                        await userManager.AddToRolesAsync(oldUser,selectedRoles);
+                    }
                 }
                 return View("index");
             }

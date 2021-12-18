@@ -12,6 +12,7 @@ namespace HrSystem.Models
         public TimeSpan AttendanceTime { get; set; }
         public TimeSpan LeaveTime { get; set; }
         public DateTime AttendanceDate { get; set; }
+        public Boolean Isattend { get; set; }
         [ForeignKey("Employee")]
         [Required]
         public string EmployeeId { get; set; }

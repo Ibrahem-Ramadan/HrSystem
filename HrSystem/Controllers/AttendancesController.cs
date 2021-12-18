@@ -46,10 +46,10 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances
-        public IActionResult Index(int? page,DateTime? search)
+        public IActionResult Index(int? page, DateTime? search)
         {
             var pageNumber = page ?? 1;
-            
+
             if (search != null)
             {
                 return View(_context.Attendances.OrderByDescending(x => x.AttendanceDate)
@@ -63,14 +63,26 @@ namespace HrSystem.Controllers
         // GET: Attendances/Create
         public IActionResult Create()
         {
+            List<string> vs = new List<string>();
+            foreach (var item in _context.WeeklyHolidays)
+            {
+                if (item.IsHoliday == true)
+                {
+                    vs.Add(item.Id.ToString());
+                }
+            }
+            for (int i = 0; i < vs.Count - 1; i++)
+            {
+                vs[i] = vs[i] + ",";
+            }
+            ViewBag.WeeklyHolidays = vs;
             ViewBag.EmployeeId = _context.Employees.ToList();
             return View();
         }
-
         // POST: Attendances/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AttendanceTime,LeaveTime,AttendanceDate,EmployeeId")] Attendance attendance)
+        public async Task<IActionResult> Create([Bind("AttendanceTime,LeaveTime,AttendanceDate,Isattend,EmployeeId")] Attendance attendance)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +113,7 @@ namespace HrSystem.Controllers
         // POST: Attendances/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,EmployeeId")] Attendance attendance)
+        public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,Isattend,EmployeeId")] Attendance attendance)
         {
             if (id != attendance.AttendanceId)
             {

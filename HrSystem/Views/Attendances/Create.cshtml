@@ -30,6 +30,17 @@
                 </div>
 
                 <div class="form-group row">
+                    <div class="col-md-5 text-right">
+                        <input type="radio" class="form-check-input" id="attendant" name="Isattend" checked value="true" onclick="En_time()">
+                        <label  for="attendant">Attendant</label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="radio" class="form-check-input" id="absent" name="Isattend" value="false" onclick="Dis_time()">
+                        <label for="absent">Absent</label>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
                     <label class="col-md-3 label-control" for="Date">Date: </label>
                     <div class="has-icon-left col-md-6">
                         <input type="date" id="Date" class="form-control" name="AttendanceDate">
@@ -99,5 +110,24 @@
 @section scripts{
 <script>
     var x = document.getElementById("Date").max ="@DateTime.Now.ToString("yyyy-MM-dd")";
+
+    function Dis_time(){
+        document.getElementById("Start").disabled = true;
+        document.getElementById("End").disabled = true;}
+
+    function En_time(){
+        document.getElementById("Start").disabled = false;
+        document.getElementById("End").disabled = false;}
+
+
+
+    const picker = document.getElementById('Date');
+    picker.addEventListener('input', function(e){
+        var day = new Date(this.value).getUTCDay();
+        if([@foreach (var item in (List<string>)ViewBag.WeeklyHolidays){
+             @item }].includes(day)){
+            e.preventDefault();
+            this.value = '';
+            alert('Weekends not allowed');}});
 </script>
 }

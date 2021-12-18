@@ -36,21 +36,7 @@ namespace HrSystem.Data
             builder.Entity<IdentityUserLogin<string>>().ToTable("UsersLogins");
             builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             builder.Entity<Salary>().HasKey(m => new { m.Year, m.Month, m.employeeId });
-
+            builder.Entity<WeeklyHoliday>().Property(p => p.Id).UseIdentityColumn(0, 1);
         }
-
-        //protected override void ConfigureConventions(ModelConfigurationBuilder builder)
-        //{
-        //    builder.Properties<DateOnly>()
-        //        .HaveConversion<DateOnlyConverter>()
-        //        .HaveColumnType("date");
-        //}
-        //public class DateOnlyConverter : ValueConverter<DateOnly, DateTime>
-        //{
-        //    public DateOnlyConverter() : base(
-        //            d => d.ToDateTime(TimeOnly.MinValue),
-        //            d => DateOnly.FromDateTime(d))
-        //    { }
-        //}
     }
 }

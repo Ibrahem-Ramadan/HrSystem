@@ -13,13 +13,13 @@ namespace HrSystem.Seeds
             {
                 var weekinit = new List<WeeklyHoliday>()
                 {
-                    new WeeklyHoliday("Sturday", false),
                     new WeeklyHoliday("Sunday", false),
                     new WeeklyHoliday("Monday", false),
                     new WeeklyHoliday("Tuesday", false),
                     new WeeklyHoliday("Wednesday", false),
                     new WeeklyHoliday("Thursday", false),
                     new WeeklyHoliday("Friday", false),
+                    new WeeklyHoliday("Sturday", false),
 
                 };
 

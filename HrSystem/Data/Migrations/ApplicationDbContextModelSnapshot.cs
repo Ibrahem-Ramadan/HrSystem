@@ -40,6 +40,9 @@ namespace HrSystem.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("Isattend")
+                        .HasColumnType("bit");
+
                     b.Property<TimeSpan?>("Late")
                         .HasColumnType("time");
 
@@ -360,7 +363,7 @@ namespace HrSystem.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 0L, 1);
 
                     b.Property<string>("Day")
                         .IsRequired()

@@ -46,14 +46,14 @@
                 @Html.DisplayFor(modelItem => item.Employee.FirstName)
                 @Html.DisplayFor(modelItem => item.Employee.LastName)
             </td>
+            <td>
+                @Html.DisplayName(item.AttendanceDate.ToShortDateString())
+            </td>
             @if (item.Isattend == false){
-                <td colspan="3" class="text-center text-danger font-weight-bold">
+                <td colspan="2" class="text-center text-danger font-weight-bold">
                     ABSENT
                 </td>}
             else{
-                <td>
-                    @Html.DisplayName(item.AttendanceDate.ToShortDateString())
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AttendanceTime)
                 </td>

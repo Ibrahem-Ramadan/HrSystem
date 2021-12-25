@@ -25,14 +25,15 @@ namespace HrSystem.Controllers
                 {
                     ExcelWorksheet worksheet = package.Workbook.Worksheets.First();
                     var rowcount = worksheet.Dimension.Rows;
-                    for (int row = 2; row < rowcount; row++)
+                    for (int row = 2; row <= rowcount; row++)
                     {
                         list.Add(new Attendance
                         {
-                            EmployeeId = (worksheet.Cells[row, 1].Value ?? string.Empty).ToString().Trim(),
-                            AttendanceDate = DateTime.Parse((worksheet.Cells[row, 2].Text ?? string.Empty).ToString()),
-                            AttendanceTime = TimeSpan.Parse((worksheet.Cells[row, 3].Text ?? string.Empty).ToString()),
-                            LeaveTime = TimeSpan.Parse((worksheet.Cells[row, 4].Text ?? string.Empty).ToString())
+                            EmployeeId = worksheet.Cells[row, 1].Text.ToString(),
+                            AttendanceDate = DateTime.Parse(worksheet.Cells[row, 2].Text.ToString()),
+                            AttendanceTime = TimeSpan.Parse(worksheet.Cells[row, 3].Text.ToString()),
+                            LeaveTime = TimeSpan.Parse(worksheet.Cells[row, 4].Text.ToString()),
+                            Isattend = Boolean.Parse(worksheet.Cells[row, 5].Value.ToString())
                         });
                     }
                 }

@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using HrSystem.ViewModels;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HrSystem.Data
 {
@@ -37,6 +35,8 @@ namespace HrSystem.Data
             builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             builder.Entity<Salary>().HasKey(m => new { m.Year, m.Month, m.employeeId });
             builder.Entity<WeeklyHoliday>().Property(p => p.Id).UseIdentityColumn(0, 1);
+            builder.Entity<Attendance>().Property(p => p.Discount).HasDefaultValue(0);
+            builder.Entity<Attendance>().Property(p => p.Overtime).HasDefaultValue(0);
         }
     }
 }

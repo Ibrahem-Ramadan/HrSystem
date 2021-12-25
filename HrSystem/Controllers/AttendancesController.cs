@@ -33,7 +33,7 @@ namespace HrSystem.Controllers
                             AttendanceDate = DateTime.Parse(worksheet.Cells[row, 2].Text.ToString()),
                             AttendanceTime = TimeSpan.Parse(worksheet.Cells[row, 3].Text.ToString()),
                             LeaveTime = TimeSpan.Parse(worksheet.Cells[row, 4].Text.ToString()),
-                            Isattend = Boolean.Parse(worksheet.Cells[row, 5].Value.ToString())
+                            IsAttend = Boolean.Parse(worksheet.Cells[row, 5].Value.ToString())
                         });
                     }
                 }
@@ -83,8 +83,34 @@ namespace HrSystem.Controllers
         // POST: Attendances/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AttendanceTime,LeaveTime,AttendanceDate,Isattend,EmployeeId")] Attendance attendance)
+        public async Task<IActionResult> Create([Bind("AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
+            var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
+
+            if (attendance.LeaveTime != employee.CheckOutTime.Value)
+            {
+                int z = int.Parse((attendance.LeaveTime - employee.CheckOutTime.Value).TotalMinutes.ToString());
+                if (z > 0)
+                {
+                    attendance.Overtime = z;
+                }
+                else
+                {
+                    attendance.Discount = z * -1;
+                }
+            }
+            if (attendance.AttendanceTime != employee.AttendanceTime.Value)
+            {
+                int z = int.Parse((attendance.AttendanceTime - employee.AttendanceTime.Value).TotalMinutes.ToString());
+                if (z > 0)
+                {
+                    attendance.Discount += z;
+                }
+                else
+                {
+                    attendance.Overtime += z * -1;
+                }
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(attendance);
@@ -114,8 +140,34 @@ namespace HrSystem.Controllers
         // POST: Attendances/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,Isattend,EmployeeId")] Attendance attendance)
+        public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
+            var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
+
+            if (attendance.LeaveTime != employee.CheckOutTime.Value)
+            {
+                int z = int.Parse((attendance.LeaveTime - employee.CheckOutTime.Value).TotalMinutes.ToString());
+                if (z > 0)
+                {
+                    attendance.Overtime = z;
+                }
+                else
+                {
+                    attendance.Discount = z * -1;
+                }
+            }
+            if (attendance.AttendanceTime != employee.AttendanceTime.Value)
+            {
+                int z = int.Parse((attendance.AttendanceTime - employee.AttendanceTime.Value).TotalMinutes.ToString());
+                if (z > 0)
+                {
+                    attendance.Discount += z;
+                }
+                else
+                {
+                    attendance.Overtime += z * -1;
+                }
+            }
             if (id != attendance.AttendanceId)
             {
                 return NotFound();

@@ -7,12 +7,12 @@ namespace HrSystem.Models
     {
         [Key]
         public int AttendanceId { get; set; }
-        public TimeSpan? OverTime { get; set; }
-        public TimeSpan? Late { get; set; }
+        public Boolean IsAttend { get; set; }
+        public DateTime AttendanceDate { get; set; }
         public TimeSpan AttendanceTime { get; set; }
         public TimeSpan LeaveTime { get; set; }
-        public DateTime AttendanceDate { get; set; }
-        public Boolean Isattend { get; set; }
+        public int Overtime { get; set; }
+        public int Discount { get; set; }
         [ForeignKey("Employee")]
         [Required]
         public string EmployeeId { get; set; }

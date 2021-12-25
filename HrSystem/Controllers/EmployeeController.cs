@@ -16,28 +16,14 @@ namespace HrSystem.Controllers
             this.DbContext = DbContext;
         }
 
+
+
         // GET: EmployeeController
-        [HasPermission("Employees","View")]
+        [HasPermission("Employees", "View")]
         public  ActionResult Index()
         {
-            var empContext = DbContext.Employees.ToList();
-            List<EmployeeViewModel> Data = new List<EmployeeViewModel>();
-            foreach (var emp in empContext)
-            {
-                var obj = new EmployeeViewModel();
-                obj.FirstName = emp.FirstName;
-                obj.FirstName= emp.LastName;
-                obj.Id = emp.Id;
-                obj.PhoneNumber = emp.PhoneNumber;
-                obj.JopTitle = emp.JopTitle;
-                obj.SalaryAmount = emp.SalaryAmount;
-                obj.AttendanceTime = emp.AttendanceTime;
-                obj.CheckOutTime = emp.CheckOutTime;
-                obj.Gender = emp.Gender;
-
-                Data.Add(obj);
-            }
-            return View(Data);
+           
+            return View();
         }
         public ActionResult Users()
         {
@@ -79,7 +65,6 @@ namespace HrSystem.Controllers
 
                 var empContext = DbContext.Employees.ToList();
                 List<EmployeeVM> Data = new List<EmployeeVM>();
-
                 foreach (var emp in empContext)
                 {
                     var obj = new EmployeeVM();
@@ -155,7 +140,6 @@ namespace HrSystem.Controllers
         }
 
         // GET: EmployeeController/Details/5
-        [HasPermission("Employees", "View")]
         public ActionResult Details(string id)
         {
             var emp = DbContext.Employees.Find(id);
@@ -181,7 +165,6 @@ namespace HrSystem.Controllers
         }
 
         // GET: EmployeeController/Create
-        [HasPermission("Employees", "Add")]
         public ActionResult Create()
         {
             ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
@@ -190,7 +173,6 @@ namespace HrSystem.Controllers
 
         // POST: EmployeeController/Create
         [HttpPost]
-        [HasPermission("Employees", "Add")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EmployeeViewModel newEmployee , IFormFile ProfilePicture)
         {
@@ -260,6 +242,7 @@ namespace HrSystem.Controllers
         {
             ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
             var emp = DbContext.Employees.Find(id);
+
             var obj = new EmployeeViewModel();
             obj.FirstName = emp.FirstName;
             obj.LastName = emp.LastName;
@@ -276,7 +259,9 @@ namespace HrSystem.Controllers
             obj.Gender = emp.Gender;
             obj.Address = emp.Address;
             obj.Notes = emp.Notes;
-
+            obj.EmploymentDate = emp.EmploymentDate;
+            obj.ProfilePicture = "/ProfilePics/" + emp.ProfilePicture;
+            obj.BirthOfDate = emp.BirthOfDate;
             return View(obj);
         }
 
@@ -285,14 +270,25 @@ namespace HrSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [HasPermission("Employees", "Edit")]
-        public ActionResult Edit(string id, EmployeeViewModel newEmployee)
+
+        public ActionResult Edit(string id, EmployeeViewModel newEmployee, IFormFile ProfilePicture)
         {
             try
             {
                 var emp = DbContext.Employees.Find(id);
                 if (ModelState.IsValid)
                 {
+                    if (ProfilePicture != null)
+                    {
+                        newEmployee.ProfilePicture = Path.GetFileName(ProfilePicture.FileName);
+                        using (FileStream stream = new FileStream(Path.Combine("wwwroot/ProfilePics", newEmployee.ProfilePicture), FileMode.Create))
+                        {
+                            ProfilePicture.CopyTo(stream);
 
+                        }
+                        emp.ProfilePicture = newEmployee.ProfilePicture;
+                    }
+                    
                     emp.FirstName = newEmployee.FirstName;
                     emp.LastName = newEmployee.LastName;
                     emp.Gender = newEmployee.Gender;
@@ -317,7 +313,7 @@ namespace HrSystem.Controllers
 
                 }
                 ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
-                return View();
+                return RedirectToAction("Index");
             }
             catch
             {

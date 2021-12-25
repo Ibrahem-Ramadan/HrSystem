@@ -205,7 +205,10 @@
 										</label>
 										<span asp-validation-for="ProfilePicture" class="text-danger"></span>
 									</div>
+									<div class="col-md-2">
+                                      <img id="PicSrc" style="height:50px; width:57px;" class="img-circle" src="" />
 
+                                    </div>
 								</div>
 								
 								@*Notes*@
@@ -213,10 +216,11 @@
 									<label class="col-md-3 label-control"asp-for="Notes">Notes: </label>
 									<div class="col-md-9">
 										<textarea  asp-for="Notes" rows="5" class="form-control" ></textarea>
-										<span asp-validation-for="ProfilePicture" class="text-danger"></span>
+										<span asp-validation-for="Notes" class="text-danger"></span>
 									</div>
+										
 								</div>
-
+							
 
 								<div class="form-actions">
 									<button type="reset" class="btn btn-danger mr-1">
@@ -241,4 +245,23 @@
     @{
 	await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
+<script>
+      $("#Pic").change(function () {
+        debugger;
+        var fileInput = $("#Pic")[0],
+            file = fileInput.files && fileInput.files[0];
+        if (file) {
+            var img = new Image();
+            img.src = window.URL.createObjectURL(file);
+            img.onload = function () {
+                var width = img.naturalWidth,
+                    height = img.naturalHeight;
+                window.URL.revokeObjectURL(img.src);
+                $("#PicSrc").prop("src", window.URL.createObjectURL(file));
+                $("#PicSrc").attr("href", window.URL.createObjectURL(file));
+
+            };
+        }
+    });
+</script>
 }

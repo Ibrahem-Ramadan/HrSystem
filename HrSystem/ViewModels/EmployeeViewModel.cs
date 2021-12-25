@@ -31,9 +31,7 @@ namespace HrSystem.ViewModels
         [Required]
         public DateTime? EmploymentDate { get; set; }
         public DateTime? BirthOfDate { get; set; }
-        [Required]
         public TimeSpan? CheckOutTime { get; set; }
-        [Required]
         public TimeSpan? AttendanceTime { get; set; }
         public int? deptId { get; set; }
       

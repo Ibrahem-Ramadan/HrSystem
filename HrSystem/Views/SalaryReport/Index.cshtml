@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<SalaryReportViewModel>
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -24,14 +25,7 @@
                                 <div class="dataTables_length" id="DataTables_Table_0_length">
                                     <label>
                                         Year
-                                        <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control form-control-sm">
-                                            <option value="10">1995</option>
-                                            <option value="1996">1996</option>
-                                            <option value="1997">1997</option>
-                                            <option value="2000">
-                                                2000
-                                            </option>
-                                        </select>
+                                        <input type="number" class="form-control" id="year"/>
                                     </label>
                                 </div>
                             </div>
@@ -40,14 +34,7 @@
                                 <div class="dataTables_length" id="DataTables_Table_0_length">
                                     <label>
                                         Month
-                                        <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="form-control form-control-sm">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">
-                                                3
-                                            </option>
-                                        </select>
+                                        <input type="number" class="form-control" id="month" />
                                     </label>
                                 </div>
                             </div>
@@ -59,44 +46,7 @@
                                 </button>
                             </div>
                         </div>
-                        <table class="table table-striped table-bordered zero-configuration mt-40">
-                            <thead>
-                                <tr>
-                                    <th>Employee Name</th>
-                                    <th>Salary</th>
-                                    <th>Attendance days</th>
-                                    <th>Absent days</th>
-                                    <th>Overtime hours</th>
-                                    <th> Discount hours</th>
-                                    <th>Extra</th>
-                                    <th>discount</th>
-                                    <th>Total</th>
-                                    <th>Details</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-                                <tr>
-                                    <td>tasneem Saleh</td>
-                                    <td>$320,800</td>
-                                    <td>5</td>
-                                    <td>6</td>
-                                    <td>$320,800</td>
-                                    <td>$320,800</td>
-                                    <td>55$</td>
-                                    <td>21$</td>
-                                    <td>502$</td>
-                                    <td>
-                                        <button class="btn btn-danger mb-2">
-                                            <i class="ft-plus"></i>&nbsp;
-                                            <a href="invoice.html"> Invoice</a>
-                                        </button>
-                                    </td>
-                                </tr>
-
-                            </tbody>
-
-                        </table>
+                        <div id="salarytable">@* Partial View Loaded Here *@</div>
                     </div>
                 </div>
             </div>
@@ -104,3 +54,32 @@
     </div>
 </section>
 
+@section Scripts {
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootbox.js/bootbox.min.js"></script>
+
+<script>
+      //load groups (roles) in #rolesTable div  and delete it
+    $(function () {
+        $("#salarytable").load("/SalaryReport/SalaryReport")
+
+    });
+
+    let year=null;
+    let month=null;
+
+    $('#year').on('keyup',function(event){
+        year =  $('#year').val()
+        $("#salarytable").load(`/SalaryReport/SalaryReport?_month=${month}&_year=${year}`);
+    });
+
+    $('#month').on('keyup',function(event){
+        month =  $('#month').val()
+        $("#salarytable").load(`/SalaryReport/SalaryReport?_month=${month}&_year=${year}`);
+    });
+
+
+</script>
+<partial name="_ValidationScriptsPartial" />
+
+}

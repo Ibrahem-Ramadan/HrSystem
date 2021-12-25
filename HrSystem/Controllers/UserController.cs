@@ -18,6 +18,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: User
+        [HasPermission("Groups", "View")]
         public async Task<ActionResult> Index()
         { 
             List<UserRolesViewModel> userRoles = new List<UserRolesViewModel>();
@@ -65,6 +66,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: User/Edit/5
+        [HasPermission("Groups", "Edit")]
         public async Task<ActionResult> Edit(string userId)
         {
             var user = await userManager.FindByIdAsync(userId);
@@ -86,6 +88,7 @@ namespace HrSystem.Controllers
         // POST: User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("Groups", "Edit")]
         public async Task<ActionResult> Edit(EditUserViewModel editUserViewModel)
         {
             try
@@ -123,6 +126,8 @@ namespace HrSystem.Controllers
         }
 
         // GET: User/Delete/5
+        [HasPermission("Groups", "Delete")]
+
         public async Task<ActionResult> Delete(string id)
         {
             await userManager.DeleteAsync(await userManager.FindByIdAsync(id));

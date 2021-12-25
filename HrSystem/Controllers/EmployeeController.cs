@@ -16,9 +16,8 @@ namespace HrSystem.Controllers
             this.DbContext = DbContext;
         }
 
-
-
         // GET: EmployeeController
+        [HasPermission("Employees","View")]
         public  ActionResult Index()
         {
             var empContext = DbContext.Employees.ToList();
@@ -80,6 +79,7 @@ namespace HrSystem.Controllers
 
                 var empContext = DbContext.Employees.ToList();
                 List<EmployeeVM> Data = new List<EmployeeVM>();
+
                 foreach (var emp in empContext)
                 {
                     var obj = new EmployeeVM();
@@ -155,6 +155,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: EmployeeController/Details/5
+        [HasPermission("Employees", "View")]
         public ActionResult Details(string id)
         {
             var emp = DbContext.Employees.Find(id);
@@ -180,6 +181,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: EmployeeController/Create
+        [HasPermission("Employees", "Add")]
         public ActionResult Create()
         {
             ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
@@ -188,6 +190,7 @@ namespace HrSystem.Controllers
 
         // POST: EmployeeController/Create
         [HttpPost]
+        [HasPermission("Employees", "Add")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EmployeeViewModel newEmployee , IFormFile ProfilePicture)
         {
@@ -251,6 +254,8 @@ namespace HrSystem.Controllers
 
         // GET: EmployeeController/Edit/5
         [HttpGet]
+        [HasPermission("Employees", "Edit")]
+
         public ActionResult Edit(string id)
         {
             ViewBag.Departments = new SelectList(DbContext.Departments, "DeptId", "DeptName");
@@ -279,6 +284,7 @@ namespace HrSystem.Controllers
         // POST: EmployeeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("Employees", "Edit")]
         public ActionResult Edit(string id, EmployeeViewModel newEmployee)
         {
             try
@@ -321,6 +327,8 @@ namespace HrSystem.Controllers
         }
 
         // GET: EmployeeController/Delete/5
+        [HasPermission("Employees", "Delete")]
+
         public ActionResult Delete(string id)
         {
             var emp = DbContext.Employees.Find(id);
@@ -347,6 +355,8 @@ namespace HrSystem.Controllers
         // POST: EmployeeController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("Employees", "Delete")]
+
         public ActionResult Delete(string id, EmployeeViewModel newEmployee)
         {
             try

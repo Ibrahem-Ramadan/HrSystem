@@ -1,11 +1,13 @@
 ﻿using HrSystem.Data;
 using HrSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HrSystem.Controllers
 {
-	public class HolidaysController : Controller
+    [Authorize]
+    public class HolidaysController : Controller
 	{
 
 		public ApplicationDbContext DbContext;
@@ -14,6 +16,7 @@ namespace HrSystem.Controllers
 			this.DbContext = DbContext;
 		}
 		// GET: HolidaysController
+        [HasPermission("OfficialHolidays","View")]
 		public ActionResult Index()
 		{
 			return View();
@@ -22,6 +25,7 @@ namespace HrSystem.Controllers
 
 
         [HttpPost]
+        [HasPermission("OfficialHolidays", "View")]
         public ActionResult IndexDataTable()
         {
 
@@ -55,10 +59,6 @@ namespace HrSystem.Controllers
 
 
                 var Vacs = DbContext.OfficialHolidays.ToList();
-
-             
-
-
                 var VacationsData = Vacs.ToList().AsEnumerable();
 
 
@@ -94,14 +94,9 @@ namespace HrSystem.Controllers
         }
 
 
-        // GET: HolidaysController/Details/5
-        public ActionResult Details(int id)
-		{
-			return View();
-		}
-
-		// GET: HolidaysController/Create
-		public ActionResult Create()
+        // GET: HolidaysController/Create
+        [HasPermission("OfficialHolidays", "Add")]
+        public ActionResult Create()
 		{
 			return View();
 		}
@@ -109,7 +104,8 @@ namespace HrSystem.Controllers
 		// POST: HolidaysController/Create
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(OfficialHoliday Holiday)
+        [HasPermission("OfficialHolidays", "Add")]
+        public ActionResult Create(OfficialHoliday Holiday)
 		{
 			try
 			{
@@ -131,8 +127,9 @@ namespace HrSystem.Controllers
 			}
 		}
 
-		// GET: HolidaysController/Edit/5
-		public ActionResult Edit(int id)
+        // GET: HolidaysController/Edit/5
+        [HasPermission("OfficialHolidays", "Edit")]
+        public ActionResult Edit(int id)
 		{
 			var holiday = DbContext.OfficialHolidays.Find(id);
 			return View(holiday);
@@ -141,7 +138,8 @@ namespace HrSystem.Controllers
 		// POST: HolidaysController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(OfficialHoliday Holiday)
+        [HasPermission("OfficialHolidays", "Edit")]
+        public ActionResult Edit(OfficialHoliday Holiday)
 		{
 			try
 			{
@@ -162,6 +160,7 @@ namespace HrSystem.Controllers
 		}
 
         // GET: HolidaysController/Delete/5
+        [HasPermission("OfficialHolidays", "Delete")]
         public ActionResult Delete(int id)
         {
             var vac = DbContext.OfficialHolidays.Find(id);
@@ -171,6 +170,7 @@ namespace HrSystem.Controllers
         // POST: VacationsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("OfficialHolidays", "Delete")]
         public ActionResult Deletee(int id, OfficialHoliday vacc)
         {
             try

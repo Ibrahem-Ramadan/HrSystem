@@ -23,6 +23,7 @@ namespace HrSystem.Controllers
             return View();
         }
 
+        [HasPermission("SalaryReport", "View")]
         public ActionResult SalaryReport(int? _month , int? _year)
         {
             int? year = _year==null ? DateTime.Now.Year:_year;
@@ -42,7 +43,7 @@ namespace HrSystem.Controllers
                     int NumOfEmpAbsentDays = EmpAttendances.Where(a => !a.IsAttend).Count();
                     int WorkHours = (int)employee.CheckOutTime.Value.Subtract(employee.AttendanceTime.Value).TotalHours;
 
-                    double salaryPerday = employee.SalaryAmount / (30 - _dbContext.WeeklyHolidays.Where(w => w.IsHoliday).Count() * 4);
+                    double salaryPerday = employee.SalaryAmount / (30/* - _dbContext.WeeklyHolidays.Where(w => w.IsHoliday).Count() * 4*/);
                     double salaryPerhour = salaryPerday / WorkHours;
 
 
@@ -88,6 +89,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: SalaryReportController/Details/5
+        [HasPermission("SalaryReport", "View")]
         public ActionResult Details(int id)
         {
             return View();

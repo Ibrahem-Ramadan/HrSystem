@@ -57,7 +57,7 @@ namespace HrSystem.Seeds
             await roleManager.AddPermissionClaims(adminRole, Modules.Groups.ToString());
             await roleManager.AddPermissionClaims(adminRole, Modules.Attendance.ToString());
             await roleManager.AddPermissionClaims(adminRole, Modules.SalaryReport.ToString());
-            await roleManager.AddPermissionClaims(adminRole, Modules.Vacations.ToString());
+            await roleManager.AddPermissionClaims(adminRole, Modules.Users.ToString());
             await roleManager.AddPermissionClaims(adminRole, Modules.OfficialHolidays.ToString());
         }
 
@@ -86,8 +86,8 @@ namespace HrSystem.Seeds
                 if (!allClaims.Any(c => c.Type == Modules.SalaryReport.ToString() && c.Value == permission))
                     await roleManager.AddClaimAsync(role, new Claim(Modules.SalaryReport.ToString(), permission));
 
-                if (!allClaims.Any(c => c.Type == Modules.Vacations.ToString() && c.Value == permission))
-                    await roleManager.AddClaimAsync(role, new Claim(Modules.Vacations.ToString(), permission));
+                if (!allClaims.Any(c => c.Type == Modules.Users.ToString() && c.Value == permission))
+                    await roleManager.AddClaimAsync(role, new Claim(Modules.Users.ToString(), permission));
 
             }
         }

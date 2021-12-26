@@ -1,11 +1,13 @@
 ﻿using HrSystem.Models;
 using HrSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HrSystem.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         readonly private UserManager<User> userManager;
@@ -18,7 +20,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: User
-        [HasPermission("Groups", "View")]
+        [HasPermission("Users", "View")]
         public async Task<ActionResult> Index()
         { 
             List<UserRolesViewModel> userRoles = new List<UserRolesViewModel>();
@@ -29,6 +31,8 @@ namespace HrSystem.Controllers
             }
             return View(userRoles);
         }
+
+        [HasPermission("Users", "View")]
         public async Task<ActionResult> loadUsersAsync()
         {
             List<UserRolesViewModel> userRoles = new List<UserRolesViewModel>();
@@ -40,6 +44,7 @@ namespace HrSystem.Controllers
             return PartialView(userRoles);
         }
 
+        [HasPermission("Users", "View")]
         public async Task<ActionResult> searchusersAsync(string username)
         {
 
@@ -66,7 +71,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: User/Edit/5
-        [HasPermission("Groups", "Edit")]
+        [HasPermission("Users", "Edit")]
         public async Task<ActionResult> Edit(string userId)
         {
             var user = await userManager.FindByIdAsync(userId);
@@ -88,7 +93,7 @@ namespace HrSystem.Controllers
         // POST: User/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [HasPermission("Groups", "Edit")]
+        [HasPermission("Users", "Edit")]
         public async Task<ActionResult> Edit(EditUserViewModel editUserViewModel)
         {
             try
@@ -126,7 +131,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: User/Delete/5
-        [HasPermission("Groups", "Delete")]
+        [HasPermission("Users", "Delete")]
 
         public async Task<ActionResult> Delete(string id)
         {

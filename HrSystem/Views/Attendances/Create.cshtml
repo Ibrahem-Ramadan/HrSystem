@@ -31,11 +31,11 @@
 
                 <div class="form-group row">
                     <div class="col-md-5 text-right">
-                        <input type="radio" class="form-check-input" id="attendant" name="Isattend" checked value="true" onclick="En_time()">
+                        <input type="radio" class="form-check-input" id="attendant" name="IsAttend" checked value="true" onclick="En_time()">
                         <label  for="attendant">Attendant</label>
                     </div>
                     <div class="col-md-6">
-                        <input type="radio" class="form-check-input" id="absent" name="Isattend" value="false" onclick="Dis_time()">
+                        <input type="radio" class="form-check-input" id="absent" name="IsAttend" value="false" onclick="Dis_time()">
                         <label for="absent">Absent</label>
                     </div>
                 </div>
@@ -109,25 +109,49 @@
 
 @section scripts{
 <script>
-    var x = document.getElementById("Date").max ="@DateTime.Now.ToString("yyyy-MM-dd")";
+    document.getElementById("Date").max ="@DateTime.Now.ToString("yyyy-MM-dd")";
 
-    function Dis_time(){
+    function Dis_time()
+    {
         document.getElementById("Start").disabled = true;
-        document.getElementById("End").disabled = true;}
+        document.getElementById("End").disabled = true;
+    };
 
-    function En_time(){
+    function En_time()
+    {
         document.getElementById("Start").disabled = false;
-        document.getElementById("End").disabled = false;}
-
-
+        document.getElementById("End").disabled = false;
+    };
 
     const picker = document.getElementById('Date');
-    picker.addEventListener('input', function(e){
+    picker.addEventListener('input', function (e)
+    {
         var day = new Date(this.value).getUTCDay();
-        if([@foreach (var item in (List<string>)ViewBag.WeeklyHolidays){
-             @item }].includes(day)){
+        if ([@foreach (var item in (List<string>)ViewBag.WeeklyHolidays) {@item}].includes(day))
+        {
             e.preventDefault();
             this.value = '';
-            alert('Weekends not allowed');}});
+            alert("You can't insert Weekend days!");
+        }
+    });
+</script>
+<script>
+    var msg = @TempData["upcoming_days"];
+    if (msg = 1)
+    {
+        alert("You can't insert upcoming days!");
+    };
+
+</script>
+<script>
+    var x = [@foreach (var item in (List<string>)ViewBag.OfficialHolidays) {@item}];
+
+    document.getElementById("Date").onchange = val => {
+      if (x.includes(val.target.value)) {
+        alert("You can't insert Official Holidays!");
+        val.target.value = '';
+      }
+    }
+
 </script>
 }

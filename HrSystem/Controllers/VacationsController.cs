@@ -1,11 +1,14 @@
 ﻿using HrSystem.Data;
 using HrSystem.Models;
 using HrSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HrSystem.Controllers
 {
+
+    [Authorize]
     public class VacationsController : Controller
     {
         public ApplicationDbContext DbContext;

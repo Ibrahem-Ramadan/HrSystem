@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
+using HrSystem.Controllers;
 using HrSystem.Data;
 using HrSystem.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -17,6 +18,7 @@ using System.Text.Encodings.Web;
 
 namespace HrSystem.Areas.Identity.Pages.Account
 {
+    [HasPermission("Users", "Add")]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<User> _signInManager;

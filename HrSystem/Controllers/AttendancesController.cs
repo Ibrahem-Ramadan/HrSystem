@@ -1,5 +1,6 @@
 ﻿using HrSystem.Data;
 using HrSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OfficeOpenXml;
@@ -15,6 +16,7 @@ namespace HrSystem.Controllers
             _context = context;
         }
 
+        [HasPermission("Attendance","Add")]
         public async Task<IActionResult> Import(IFormFile file)
         {
             var list = new List<Attendance>();
@@ -40,6 +42,40 @@ namespace HrSystem.Controllers
             }
             foreach (var item in list)
             {
+                if(item.AttendanceDate > DateTime.Now)
+                {
+                    TempData["upcoming_days"] = 1;
+                    return RedirectToAction("Create");
+                }
+                if (item.IsAttend == true)
+                {
+                    var employee = _context.Employees.FirstOrDefault(e => e.Id == item.EmployeeId);
+
+                    if (item.LeaveTime != employee.CheckOutTime.Value)
+                    {
+                        int z = int.Parse((item.LeaveTime - employee.CheckOutTime.Value).TotalMinutes.ToString());
+                        if (z > 0)
+                        {
+                            item.Overtime = z;
+                        }
+                        else
+                        {
+                            item.Discount = z * -1;
+                        }
+                    }
+                    if (item.AttendanceTime != employee.AttendanceTime.Value)
+                    {
+                        int z = int.Parse((item.AttendanceTime - employee.AttendanceTime.Value).TotalMinutes.ToString());
+                        if (z > 0)
+                        {
+                            item.Discount += z;
+                        }
+                        else
+                        {
+                            item.Overtime += z * -1;
+                        }
+                    }
+                }
                 _context.Add(item);
             }
             await _context.SaveChangesAsync();
@@ -47,6 +83,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances
+        [HasPermission("Attendance", "View")]
         public IActionResult Index(int? page, DateTime? search)
         {
             var pageNumber = page ?? 1;
@@ -62,53 +99,71 @@ namespace HrSystem.Controllers
             .Include(a => a.Employee).ToPagedList(pageNumber, 15));
         }
         // GET: Attendances/Create
+        [HasPermission("Attendance", "Add")]
         public IActionResult Create()
         {
-            List<string> vs = new List<string>();
+            List<string> WeeklyHolidays = new List<string>();
             foreach (var item in _context.WeeklyHolidays)
             {
                 if (item.IsHoliday == true)
                 {
-                    vs.Add(item.Id.ToString());
+                    WeeklyHolidays.Add(item.Id.ToString());
                 }
             }
-            for (int i = 0; i < vs.Count - 1; i++)
+            for (int i = 0; i < WeeklyHolidays.Count - 1; i++)
             {
-                vs[i] = vs[i] + ",";
+                WeeklyHolidays[i] = WeeklyHolidays[i] + ",";
             }
-            ViewBag.WeeklyHolidays = vs;
+            List<string> OfficialHolidays = new List<string>();
+            foreach (var item in _context.OfficialHolidays)
+            {
+                OfficialHolidays.Add(item.HolidayDate.ToString("yyyy-MM-dd"));
+            }
+            for (int i = 0; i < OfficialHolidays.Count; i++)
+            {
+                OfficialHolidays[i] = $"`{OfficialHolidays[i]}`";
+            }
+            for (int i = 0; i < OfficialHolidays.Count - 1; i++)
+            {
+                OfficialHolidays[i] = OfficialHolidays[i] + ",";
+            }
+            ViewBag.WeeklyHolidays = WeeklyHolidays;
+            ViewBag.OfficialHolidays = OfficialHolidays;
             ViewBag.EmployeeId = _context.Employees.ToList();
             return View();
         }
         // POST: Attendances/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("Attendance", "Add")]
         public async Task<IActionResult> Create([Bind("AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
-            var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
+            if (attendance.IsAttend==true) {
+                var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
 
-            if (attendance.LeaveTime != employee.CheckOutTime.Value)
-            {
-                int z = int.Parse((attendance.LeaveTime - employee.CheckOutTime.Value).TotalMinutes.ToString());
-                if (z > 0)
+                if (attendance.LeaveTime != employee.CheckOutTime.Value)
                 {
-                    attendance.Overtime = z;
+                    int z = int.Parse((attendance.LeaveTime - employee.CheckOutTime.Value).TotalMinutes.ToString());
+                    if (z > 0)
+                    {
+                        attendance.Overtime = z;
+                    }
+                    else
+                    {
+                        attendance.Discount = z * -1;
+                    }
                 }
-                else
+                if (attendance.AttendanceTime != employee.AttendanceTime.Value)
                 {
-                    attendance.Discount = z * -1;
-                }
-            }
-            if (attendance.AttendanceTime != employee.AttendanceTime.Value)
-            {
-                int z = int.Parse((attendance.AttendanceTime - employee.AttendanceTime.Value).TotalMinutes.ToString());
-                if (z > 0)
-                {
-                    attendance.Discount += z;
-                }
-                else
-                {
-                    attendance.Overtime += z * -1;
+                    int z = int.Parse((attendance.AttendanceTime - employee.AttendanceTime.Value).TotalMinutes.ToString());
+                    if (z > 0)
+                    {
+                        attendance.Discount += z;
+                    }
+                    else
+                    {
+                        attendance.Overtime += z * -1;
+                    }
                 }
             }
             if (ModelState.IsValid)
@@ -121,18 +176,45 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances/Edit/5
+        [HasPermission("Attendance", "Edit")]
         public async Task<IActionResult> Edit(int? id)
         {
+            List<string> WeeklyHolidays = new List<string>();
+            foreach (var item in _context.WeeklyHolidays)
+            {
+                if (item.IsHoliday == true)
+                {
+                    WeeklyHolidays.Add(item.Id.ToString());
+                }
+            }
+            for (int i = 0; i < WeeklyHolidays.Count - 1; i++)
+            {
+                WeeklyHolidays[i] = WeeklyHolidays[i] + ",";
+            }
+            List<string> OfficialHolidays = new List<string>();
+            foreach (var item in _context.OfficialHolidays)
+            {
+                OfficialHolidays.Add(item.HolidayDate.ToString("yyyy-MM-dd"));
+            }
+            for (int i = 0; i < OfficialHolidays.Count; i++)
+            {
+                OfficialHolidays[i] = $"`{OfficialHolidays[i]}`";
+            }
+            for (int i = 0; i < OfficialHolidays.Count - 1; i++)
+            {
+                OfficialHolidays[i] = OfficialHolidays[i] + ",";
+            }
             if (id == null)
             {
                 return NotFound();
             }
-
             var attendance = await _context.Attendances.FindAsync(id);
             if (attendance == null)
             {
                 return NotFound();
             }
+            ViewBag.WeeklyHolidays = WeeklyHolidays;
+            ViewBag.OfficialHolidays = OfficialHolidays;
             ViewBag.EmployeeId = _context.Employees.ToList();
             return View(attendance);
         }
@@ -140,6 +222,7 @@ namespace HrSystem.Controllers
         // POST: Attendances/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("Attendance", "Edit")]
         public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
             var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
@@ -183,6 +266,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances/Delete/5
+        [HasPermission("Attendance", "Delete")]
         public IActionResult Delete(int? id)
         {
             if (id == null)

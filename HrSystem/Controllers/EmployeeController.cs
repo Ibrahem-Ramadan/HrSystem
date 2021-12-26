@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using HrSystem.Models;
 using HrSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HrSystem.Controllers
     
 {
+    [Authorize]
     public class EmployeeController : Controller
     {
         //constrouctor and register dbContext

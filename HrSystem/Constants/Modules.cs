@@ -9,7 +9,8 @@ namespace HrSystem.Constants
         Groups,
         Attendance,
         SalaryReport,
-        Vacations,
         OfficialHolidays,
+        Users
+
     }
 }

@@ -112,6 +112,20 @@
     });
 </script>
 <script>
+    var msg = @TempData["edit_result"];
+    if (msg = 1)
+    {
+        alert("please insert vaild data!");
+    };
+</script>
+<script>
+    var msg = @TempData["edit_result1"];
+    if (msg = 1)
+    {
+        alert("This attendance is already saved!");
+    };
+</script>
+<script>
     var x = [@foreach (var item in (List<string>)ViewBag.OfficialHolidays) {@item}];
 
     document.getElementById("Date").onchange = val => {

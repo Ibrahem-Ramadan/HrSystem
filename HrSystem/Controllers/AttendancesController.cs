@@ -19,67 +19,75 @@ namespace HrSystem.Controllers
         [HasPermission("Attendance","Add")]
         public async Task<IActionResult> Import(IFormFile file)
         {
-            var list = new List<Attendance>();
-            using (var stream = new MemoryStream())
-            {
-                await file.CopyToAsync(stream);
-                using (var package = new ExcelPackage(stream))
+            try
+            { 
+                var list = new List<Attendance>();
+                using (var stream = new MemoryStream())
                 {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.First();
-                    var rowcount = worksheet.Dimension.Rows;
-                    for (int row = 2; row <= rowcount; row++)
+                    await file.CopyToAsync(stream);
+                    using (var package = new ExcelPackage(stream))
                     {
-                        list.Add(new Attendance
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.First();
+                        var rowcount = worksheet.Dimension.Rows;
+                        for (int row = 2; row <= rowcount; row++)
                         {
-                            EmployeeId = worksheet.Cells[row, 1].Text.ToString(),
-                            AttendanceDate = DateTime.Parse(worksheet.Cells[row, 2].Text.ToString()),
-                            AttendanceTime = TimeSpan.Parse(worksheet.Cells[row, 3].Text.ToString()),
-                            LeaveTime = TimeSpan.Parse(worksheet.Cells[row, 4].Text.ToString()),
-                            IsAttend = Boolean.Parse(worksheet.Cells[row, 5].Value.ToString())
-                        });
+                            list.Add(new Attendance
+                            {
+                                EmployeeId = worksheet.Cells[row, 1].Text.ToString(),
+                                AttendanceDate = DateTime.Parse(worksheet.Cells[row, 2].Text.ToString()),
+                                AttendanceTime = TimeSpan.Parse(worksheet.Cells[row, 3].Text.ToString()),
+                                LeaveTime = TimeSpan.Parse(worksheet.Cells[row, 4].Text.ToString()),
+                                IsAttend = Boolean.Parse(worksheet.Cells[row, 5].Value.ToString())
+                            });
+                        }
                     }
                 }
-            }
-            foreach (var item in list)
-            {
-                if(item.AttendanceDate > DateTime.Now)
+                foreach (var item in list)
                 {
-                    TempData["upcoming_days"] = 1;
-                    return RedirectToAction("Create");
-                }
-                if (item.IsAttend == true)
-                {
-                    var employee = _context.Employees.FirstOrDefault(e => e.Id == item.EmployeeId);
+                    if(item.AttendanceDate > DateTime.Now)
+                    {
+                        TempData["upcoming_days"] = 1;
+                        return RedirectToAction("Create");
+                    }
+                    if (item.IsAttend == true)
+                    {
+                        var employee = _context.Employees.FirstOrDefault(e => e.Id == item.EmployeeId);
 
-                    if (item.LeaveTime != employee.CheckOutTime.Value)
-                    {
-                        int z = int.Parse((item.LeaveTime - employee.CheckOutTime.Value).TotalMinutes.ToString());
-                        if (z > 0)
+                        if (item.LeaveTime != employee.CheckOutTime.Value)
                         {
-                            item.Overtime = z;
+                            int z = int.Parse((item.LeaveTime - employee.CheckOutTime.Value).TotalMinutes.ToString());
+                            if (z > 0)
+                            {
+                                item.Overtime = z;
+                            }
+                            else
+                            {
+                                item.Discount = z * -1;
+                            }
                         }
-                        else
+                        if (item.AttendanceTime != employee.AttendanceTime.Value)
                         {
-                            item.Discount = z * -1;
+                            int z = int.Parse((item.AttendanceTime - employee.AttendanceTime.Value).TotalMinutes.ToString());
+                            if (z > 0)
+                            {
+                                item.Discount += z;
+                            }
+                            else
+                            {
+                                item.Overtime += z * -1;
+                            }
                         }
                     }
-                    if (item.AttendanceTime != employee.AttendanceTime.Value)
-                    {
-                        int z = int.Parse((item.AttendanceTime - employee.AttendanceTime.Value).TotalMinutes.ToString());
-                        if (z > 0)
-                        {
-                            item.Discount += z;
-                        }
-                        else
-                        {
-                            item.Overtime += z * -1;
-                        }
-                    }
+                    _context.Add(item);
                 }
-                _context.Add(item);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
+            catch
+            {
+                TempData["import_result"] = 1;
+                return RedirectToAction("Create");
+            }
         }
 
         // GET: Attendances
@@ -138,6 +146,11 @@ namespace HrSystem.Controllers
         [HasPermission("Attendance", "Add")]
         public async Task<IActionResult> Create([Bind("AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
+            if(_context.Attendances.FirstOrDefault(e => e.EmployeeId == attendance.EmployeeId && e.AttendanceDate==attendance.AttendanceDate) != null)
+            {
+                TempData["create_result1"] = 1;
+                return RedirectToAction(nameof(Create));
+            }
             if (attendance.IsAttend==true) {
                 var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
 
@@ -172,6 +185,7 @@ namespace HrSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            TempData["create_result"] = 1;
             return RedirectToAction(nameof(Create));
         }
 
@@ -225,6 +239,11 @@ namespace HrSystem.Controllers
         [HasPermission("Attendance", "Edit")]
         public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
+            if (_context.Attendances.FirstOrDefault(e => e.EmployeeId == attendance.EmployeeId && e.AttendanceDate == attendance.AttendanceDate) != null)
+            {
+                TempData["edit_result1"] = 1;
+                return RedirectToAction(nameof(Edit));
+            }
             var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
 
             if (attendance.LeaveTime != employee.CheckOutTime.Value)
@@ -262,6 +281,7 @@ namespace HrSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            TempData["edit_result"] = 1;
             return RedirectToAction(nameof(Edit));
         }
 

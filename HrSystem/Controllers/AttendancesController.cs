@@ -16,6 +16,7 @@ namespace HrSystem.Controllers
             _context = context;
         }
 
+        [HasPermission("Attendance","Add")]
         public async Task<IActionResult> Import(IFormFile file)
         {
             var list = new List<Attendance>();
@@ -82,6 +83,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances
+        [HasPermission("Attendance", "View")]
         public IActionResult Index(int? page, DateTime? search)
         {
             var pageNumber = page ?? 1;
@@ -97,6 +99,7 @@ namespace HrSystem.Controllers
             .Include(a => a.Employee).ToPagedList(pageNumber, 15));
         }
         // GET: Attendances/Create
+        [HasPermission("Attendance", "Add")]
         public IActionResult Create()
         {
             List<string> WeeklyHolidays = new List<string>();
@@ -132,6 +135,7 @@ namespace HrSystem.Controllers
         // POST: Attendances/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("Attendance", "Add")]
         public async Task<IActionResult> Create([Bind("AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
             if (attendance.IsAttend==true) {
@@ -172,6 +176,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances/Edit/5
+        [HasPermission("Attendance", "Edit")]
         public async Task<IActionResult> Edit(int? id)
         {
             List<string> WeeklyHolidays = new List<string>();
@@ -217,6 +222,7 @@ namespace HrSystem.Controllers
         // POST: Attendances/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [HasPermission("Attendance", "Edit")]
         public async Task<IActionResult> Edit(int id, [Bind("AttendanceId,AttendanceTime,LeaveTime,AttendanceDate,IsAttend,EmployeeId")] Attendance attendance)
         {
             var employee = _context.Employees.FirstOrDefault(e => e.Id == attendance.EmployeeId);
@@ -260,6 +266,7 @@ namespace HrSystem.Controllers
         }
 
         // GET: Attendances/Delete/5
+        [HasPermission("Attendance", "Delete")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
